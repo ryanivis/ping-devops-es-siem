@@ -1,3 +1,7 @@
+This will spin up a demo lab for Ping Fed / Directory / etc images. Along with a ElasticSearch 2 Node Stack + Kibana + Logstash.
+
+Log parsing will come soon.
+
 # Server Profiles
 
 Ping Identity Server Profiles are used to provide the configuration, data, environment details to Ping Identity Docker Images.

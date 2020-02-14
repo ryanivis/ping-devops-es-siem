@@ -5,8 +5,8 @@ services:
     image: pingidentity/pingfederate:edge
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
     environment:
-      - SERVER_PROFILE_URL=https://github.com/ryanivis/pingidentity-server-profiles.git
-      - SERVER_PROFILE_PATH=pingidentity-server-profiles/baseline/pingfederate
+      - SERVER_PROFILE_URL=https://github.com/ryanivis/ping-devops-es-siem.git
+      - SERVER_PROFILE_PATH=baseline/pingfederate
       - PING_IDENTITY_ACCEPT_EULA=YES
       - PING_IDENTITY_DEVOPS_USER=$PING_IDENTITY_DEVOPS_USER
       - PING_IDENTITY_DEVOPS_KEY=$PING_IDENTITY_DEVOPS_KEY
@@ -19,8 +19,8 @@ services:
   pingdirectory:
     image: pingidentity/pingdirectory:latest
     environment:
-      - SERVER_PROFILE_URL=https://github.com/ryanivis/pingidentity-server-profiles.git
-      - SERVER_PROFILE_PATH=pingidentity-server-profiles/baseline/pingdirectory
+      - SERVER_PROFILE_URL=https://github.com/ryanivis/ping-devops-es-siem.git
+      - SERVER_PROFILE_PATH=baseline/pingdirectory
       - PING_IDENTITY_ACCEPT_EULA=YES
       - PING_IDENTITY_DEVOPS_USER=$PING_IDENTITY_DEVOPS_USER
       - PING_IDENTITY_DEVOPS_KEY=$PING_IDENTITY_DEVOPS_KEY

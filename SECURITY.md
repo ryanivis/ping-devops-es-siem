@@ -5,3 +5,10 @@ The server profiles contained within this repository are for demo and documentat
 Default master keys for this deployment are stored in this publically available repository, a production deployment would keep these files in a safe place to ensure the encryption at rest of production data is secure. As such, it is ESSENTIAL to cycle the keys in this repository before moving to production. 
 
 Please review Ping Identity's product hardening guide for security configuration options.  https://support.pingidentity.com/s/article/Security-Hardening-Guides
+
+There are default passwords involved with a configuration like this and deploying this as is with default passwords is not a supported configuration and will put you and your organization at high risk.
+
+ES Default Passwords
+Ping Default Passwords
+
+

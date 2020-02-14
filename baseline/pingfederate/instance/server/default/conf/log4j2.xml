@@ -826,14 +826,15 @@
         "Set up the Outbound provisioner audit logger" section (defined below in this configuration file)
         before the appender can be used:
         -->
-        <!--
-        <Socket name="OutboundProvisionerEventToCEFSyslog" host="{syslog.host}" port="{syslog.port}" protocol="{syslog.protocol}" ignoreExceptions="false">
+ 
+        <Socket name="OutboundProvisionerEventToCEFSyslog" host="logstash" port="20514" protocol="{syslog.protocol}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
                 <pattern>%escape{CEF}{CEF:0|Ping Identity|PingFederate|%X{pfversion}|%X{event_type}|%X{event_type}|0|rt=%d{MMM dd yyyy HH:mm:ss.SSS} cs1Label=Cycle ID cs1=%X{cycle_id} cs2Label=Channel ID cs2=%X{channel_id} cs3Label=Event type cs3=%X{event_type} cs4Label=Source ID cs4=%X{source_id} cs5Label=Target ID cs5=%X{target_id} cs6Label=Was Event Successful cs6=%X{is_success} cs7Label=Failure Cause cs7=%X{non_success_cause} %n}</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
+
         <RollingFile name="OutboundProvisionerEventToCEFSyslog-FILE" fileName="${sys:pf.log.dir}/provisioner-audit-cef-syslog-failover.log"
             filePattern="${sys:pf.log.dir}/provisioner-audit-cef-syslog-failover.%d{yyyy-MM-dd}.log" >
             <PatternLayout>
@@ -848,7 +849,7 @@
                 <AppenderRef ref="OutboundProvisionerEventToCEFSyslog-FILE" />
             </Failovers>
         </PingFailover>
-        -->
+
 
         <!-- Outbound provisioner audit log for CEFFile: A time/date based rolling appender
 
@@ -1352,6 +1353,7 @@
         <Logger name="org.sourceid.websso.profiles.idp.ClientRegistrationAuditLogger"
                 level="INFO" additivity="false" includeLocation="false">
             <appender-ref ref="SecurityAudit2File" />
+            <appender-ref ref="SecurityAuditToCEFSyslog-FAILOVER"/>
             <!--
                 <appender-ref ref="SecurityAuditToCEFSyslog-FAILOVER"/>
                 <appender-ref ref="SecurityAuditToCEFFile"/>
@@ -1463,6 +1465,7 @@
 
         <Logger name="ProvisionerAuditLogger" level="INFO" additivity="false" includeLocation="false">
             <appender-ref ref="OutboundProvisionerEventToFile" />
+            <appender-ref ref="OutboundProvisionerEventToCEFSyslog-FAILOVER"/>
             <!--
             <appender-ref ref="OutboundProvisionerEventToSQLServerDB-FAILOVER"/>
             <appender-ref ref="OutboundProvisionerEventToOracleDB-FAILOVER"/>

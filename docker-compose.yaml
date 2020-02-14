@@ -3,13 +3,17 @@ version: "2.2"
 services:
   pingfederate:
     image: pingidentity/pingfederate:edge
-    command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
+    command: wait-for pingdirectory:389 -t 500 -- entrypoint.sh start-server
     environment:
       - SERVER_PROFILE_URL=https://github.com/ryanivis/ping-devops-es-siem.git
       - SERVER_PROFILE_PATH=baseline/pingfederate
       - PING_IDENTITY_ACCEPT_EULA=YES
       - PING_IDENTITY_DEVOPS_USER=$PING_IDENTITY_DEVOPS_USER
       - PING_IDENTITY_DEVOPS_KEY=$PING_IDENTITY_DEVOPS_KEY
+      - PF_LOG_LEVEL=INFO
+      - PF_SYSLOG_DEST=logstash
+      - PF_SYSLOG_PORT=20514
+      - PF_SYSLOG_PROTO=TCP
     ports:
       - 9031:9031
       - 9999:9999

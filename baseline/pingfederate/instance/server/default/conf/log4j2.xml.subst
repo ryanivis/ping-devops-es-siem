@@ -276,10 +276,10 @@
                 <charset>UTF-8</charset> -->
 
                 <!-- Available fields for ConversionPattern:
-                %d 					  - transaction time
-                %X{cycle_id}  		  - Unique Identifier for each provisioning cycle
+                %d                    - transaction time
+                %X{cycle_id}          - Unique Identifier for each provisioning cycle
                 %X{channel_id}        - Unique Identifier for Provisioning Channel between source and target
-                %X{event_type} 		  - Type of Provisioning event such as CREATE,UPDATE,etc.,
+                %X{event_type}        - Type of Provisioning event such as CREATE,UPDATE,etc.,
                 %X{source_id}         - Provisioning Source ID
                 %X{target_id}         - Provisioning Target ID
                 %X{is_success}        - Flag to show whether the event was successful or not. True in case of success, false otherwise.
@@ -826,15 +826,14 @@
         "Set up the Outbound provisioner audit logger" section (defined below in this configuration file)
         before the appender can be used:
         -->
- 
-        <Socket name="OutboundProvisionerEventToCEFSyslog" host="logstash" port="20514" protocol="{syslog.protocol}" ignoreExceptions="false">
+        <!--
+        <Socket name="OutboundProvisionerEventToCEFSyslog" host="{syslog.host}" port="{syslog.port}" protocol="{syslog.protocol}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
                 <pattern>%escape{CEF}{CEF:0|Ping Identity|PingFederate|%X{pfversion}|%X{event_type}|%X{event_type}|0|rt=%d{MMM dd yyyy HH:mm:ss.SSS} cs1Label=Cycle ID cs1=%X{cycle_id} cs2Label=Channel ID cs2=%X{channel_id} cs3Label=Event type cs3=%X{event_type} cs4Label=Source ID cs4=%X{source_id} cs5Label=Target ID cs5=%X{target_id} cs6Label=Was Event Successful cs6=%X{is_success} cs7Label=Failure Cause cs7=%X{non_success_cause} %n}</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
-
         <RollingFile name="OutboundProvisionerEventToCEFSyslog-FILE" fileName="${sys:pf.log.dir}/provisioner-audit-cef-syslog-failover.log"
             filePattern="${sys:pf.log.dir}/provisioner-audit-cef-syslog-failover.%d{yyyy-MM-dd}.log" >
             <PatternLayout>
@@ -849,7 +848,7 @@
                 <AppenderRef ref="OutboundProvisionerEventToCEFSyslog-FILE" />
             </Failovers>
         </PingFailover>
-
+        -->
 
         <!-- Outbound provisioner audit log for CEFFile: A time/date based rolling appender
 
@@ -1096,7 +1095,7 @@
         org.sourceid.websso.profiles.idp.AsAuditLogger (when PingFederate is acting as an OAuth Authorization Server)
         -->
         
-        <Socket name="SecurityAuditToCEFSyslog" host="logstash" port="20514" protocol="TCP" ignoreExceptions="false">
+        <Socket name="SecurityAuditToCEFSyslog" host="${PF_SYSLOG_DEST}" port="${PF_SYSLOG_PORT}" protocol="${PF_SYSLOG_PROTO}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
                     <pattern>%escape{CEF}{CEF:0|Ping Identity|PingFederate|%X{pfversion}|%X{event}|%X{event}|0|rt=%d{MMM dd yyyy HH:mm:ss.SSS} duid=%X{subject} src=%X{ip} msg=%X{status} cs1Label=Target Application URL cs1=%X{app} cs2Label=Connection ID cs2=%X{connectionid} cs3Label=Protocol cs3=%X{protocol} dvchost=%X{host} cs4Label=Role cs4=%X{role} externalId=%X{trackingid} cs5Label=SP Local User ID cs5=%X{localuserid} cs6Label=Attributes cs6=%X{attributes} %n}</pattern>
@@ -1353,7 +1352,6 @@
         <Logger name="org.sourceid.websso.profiles.idp.ClientRegistrationAuditLogger"
                 level="INFO" additivity="false" includeLocation="false">
             <appender-ref ref="SecurityAudit2File" />
-            <appender-ref ref="SecurityAuditToCEFSyslog-FAILOVER"/>
             <!--
                 <appender-ref ref="SecurityAuditToCEFSyslog-FAILOVER"/>
                 <appender-ref ref="SecurityAuditToCEFFile"/>
@@ -1465,7 +1463,6 @@
 
         <Logger name="ProvisionerAuditLogger" level="INFO" additivity="false" includeLocation="false">
             <appender-ref ref="OutboundProvisionerEventToFile" />
-            <appender-ref ref="OutboundProvisionerEventToCEFSyslog-FAILOVER"/>
             <!--
             <appender-ref ref="OutboundProvisionerEventToSQLServerDB-FAILOVER"/>
             <appender-ref ref="OutboundProvisionerEventToOracleDB-FAILOVER"/>

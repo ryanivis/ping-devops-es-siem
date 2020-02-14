@@ -1,0 +1,189 @@
+version: "2.2"
+
+services:
+  pingfederate:
+    image: pingidentity/pingfederate:edge
+    command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
+    environment:
+      - SERVER_PROFILE_URL=https://github.com/ryanivis/pingidentity-server-profiles.git
+      - SERVER_PROFILE_PATH=pingidentity-server-profiles/baseline/pingfederate
+      - PING_IDENTITY_ACCEPT_EULA=YES
+      - PING_IDENTITY_DEVOPS_USER=$PING_IDENTITY_DEVOPS_USER
+      - PING_IDENTITY_DEVOPS_KEY=$PING_IDENTITY_DEVOPS_KEY
+    ports:
+      - 9031:9031
+      - 9999:9999
+    networks:
+      - pingnet
+ 
+  pingdirectory:
+    image: pingidentity/pingdirectory:latest
+    environment:
+      - SERVER_PROFILE_URL=https://github.com/ryanivis/pingidentity-server-profiles.git
+      - SERVER_PROFILE_PATH=pingidentity-server-profiles/baseline/pingdirectory
+      - PING_IDENTITY_ACCEPT_EULA=YES
+      - PING_IDENTITY_DEVOPS_USER=$PING_IDENTITY_DEVOPS_USER
+      - PING_IDENTITY_DEVOPS_KEY=$PING_IDENTITY_DEVOPS_KEY
+    ports:
+      - 1636:636
+      - 1443:443
+    networks:
+      - pingnet      
+  
+  pingdataconsole:
+    image: pingidentity/pingdataconsole:latest
+    ports:
+      - 8443:8443
+    networks:
+      - pingnet
+
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    container_name: es01
+    environment:
+      - node.name=es01
+      - discovery.seed_hosts=es01,es02
+      - cluster.initial_master_nodes=es01,es02
+      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.license.self_generated.type=basic
+      - xpack.monitoring.collection.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=$CERTS_DIR/es01/es01.key
+      - xpack.security.http.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.http.ssl.certificate=$CERTS_DIR/es01/es01.crt
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.transport.ssl.certificate=$CERTS_DIR/es01/es01.crt
+      - xpack.security.transport.ssl.key=$CERTS_DIR/es01/es01.key
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes: ['data01:/usr/share/elasticsearch/data', 'certs:$CERTS_DIR']
+    ports:
+      - 9201:9200
+    healthcheck:
+      test: curl --cacert $CERTS_DIR/ca/ca.crt -s https://localhost:9200 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 10
+    networks:
+      - pingnet
+
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    container_name: es02
+    environment:
+      - node.name=es02
+      - discovery.seed_hosts=es01,es02
+      - cluster.initial_master_nodes=es01,es02
+      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.license.self_generated.type=basic
+      - xpack.monitoring.collection.enabled=true
+      - xpack.security.enabled=true
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=$CERTS_DIR/es02/es02.key
+      - xpack.security.http.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.http.ssl.certificate=$CERTS_DIR/es02/es02.crt
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.certificate_authorities=$CERTS_DIR/ca/ca.crt
+      - xpack.security.transport.ssl.certificate=$CERTS_DIR/es02/es02.crt
+      - xpack.security.transport.ssl.key=$CERTS_DIR/es02/es02.key
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes: ['data02:/usr/share/elasticsearch/data', 'certs:$CERTS_DIR']
+    ports:
+      - 9202:9200
+    healthcheck:
+      test: curl --cacert $CERTS_DIR/ca/ca.crt -s https://localhost:9200 >/dev/null; if [[ $$? == 52 ]]; then echo 0; else echo 1; fi
+      interval: 30s
+      timeout: 10s
+      retries: 10
+    networks:
+    - pingnet
+
+  create_certs:
+    container_name: create_certs
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    command: >
+      bash -c '
+        if [[ ! -f /certs/bundle.zip ]]; then
+          bin/elasticsearch-certutil cert --silent --pem --in config/certificates/instances.yml -out /certs/bundle.zip;
+          unzip /certs/bundle.zip -d /certs;
+        fi;
+        chown -R 1000:0 /certs
+      '
+    user: "0"
+    working_dir: /usr/share/elasticsearch
+    volumes: ['certs:/certs', './pingidentity-server-profiles/elasticsearch-siem/cert_config:/usr/share/elasticsearch/config/certificates']
+    networks:
+      - pingnet
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.6.0
+    ports:
+      - "9600:9600"
+      - "20514:20514"
+    command: logstash -f /etc/logstash/conf.d/logstash.conf
+    volumes:
+      - ./pingidentity-server-profiles/elasticsearch-siem/logstash/conf.d/logstash.conf:/etc/logstash/conf.d/logstash.conf
+      - certs:$CERTS_DIR    
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      CONFIG_RELOAD_AUTOMATIC: "true"
+      CONFIG_RELOAD_INTERVAL: "5s"
+      LOG_FORMAT: "json"
+      LOG_LEVEL: "info"
+      NODE_NAME: "logstash"
+      XPACK_MANAGEMENT_ENABLED: "false"
+      XPACK_MONITORING_ENABLED: "true"
+      XPACK_MONITORING_ELASTICSEARCH_USERNAME: "elastic"
+      XPACK_MONITORING_ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
+      XPACK_MONITORING_ELASTICSEARCH_HOSTS: "https://es01:9200"
+      XPACK_MONITORING_ELASTICSEARCH_SSL_CERTIFICATE_AUTHORITY: $CERTS_DIR/es01/es01.crt
+    networks:
+      - pingnet
+    depends_on: {"es01": {"condition": "service_healthy"}}
+
+  kibana:
+    image: 'docker.elastic.co/kibana/kibana:7.6.0'
+    container_name: kibana
+    depends_on: {"es01": {"condition": "service_healthy"}}
+    environment:
+      ELASTICSEARCH_USERNAME: "elastic"
+      ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
+      ELASTICSEARCH_HOSTS: "https://es01:9200"
+      SERVER_PORT: 5601
+      SERVER_HOST: 0.0.0.0
+      ELASTICSEARCH.SSL.CERTIFICATEAUTHORITIES: $CERTS_DIR/ca/ca.crt
+      ELASTICSEARCH_SSL_VERIFICATIONMODE: none
+      XPACK_MONITORING_ENABLED: "true"
+      SERVER_NAME: ping-kibana
+      SERVER_SSL_ENABLED: "true"
+      SERVER_SSL_CERTIFICATE: $CERTS_DIR/kibana/kibana.crt
+      SERVER_SSL_KEY: $CERTS_DIR/kibana/kibana.key
+    volumes:
+      - certs:$CERTS_DIR    
+    ports:
+      - "5601:5601"
+    networks:
+      - pingnet
+    depends_on: {"es01": {"condition": "service_healthy"}}
+
+networks:
+  pingnet:
+
+volumes:
+  data01:
+    driver: local
+  data02:
+    driver: local
+  certs:
+    driver: local

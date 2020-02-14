@@ -11,9 +11,9 @@ services:
       - PING_IDENTITY_DEVOPS_USER=$PING_IDENTITY_DEVOPS_USER
       - PING_IDENTITY_DEVOPS_KEY=$PING_IDENTITY_DEVOPS_KEY
       - PF_LOG_LEVEL=INFO
-      - syslog.host=logstash
-      - syslog.port=20514
-      - syslog.protocol=TCP
+      - SYSLOG_HOST=logstash
+      - SYSLOG_PORT=20514
+      - SYSLOG_PROTOCOL=TCP
     ports:
       - 9031:9031
       - 9999:9999

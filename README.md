@@ -5,14 +5,14 @@
 
 Configure .env file in root directory first!
 ------------
-`COMPOSE_PROJECT_NAME=es`
-`ELASTIC_VERSION=7.6.0`
-`ELASTIC_SECURITY=true`
-`ELASTIC_PASSWORD=2FederateM0re`
-`CERTS_DIR=/usr/share/elasticsearch/config/certificates`
-`KIB_CERTS_DIR=/usr/share/kibana/config/certificates`
-`PING_IDENTITY_DEVOPS_USER={YOUR DEVOPS USER NAME HERE}`
-`PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}`
+`COMPOSE_PROJECT_NAME=es`   
+`ELASTIC_VERSION=7.6.0`  
+`ELASTIC_SECURITY=true`  
+`ELASTIC_PASSWORD=2FederateM0re`  
+`CERTS_DIR=/usr/share/elasticsearch/config/certificates`  
+`KIB_CERTS_DIR=/usr/share/kibana/config/certificates`  
+`PING_IDENTITY_DEVOPS_USER={YOUR DEVOPS USER NAME HERE}`  
+`PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}`  
 
 ------------
 

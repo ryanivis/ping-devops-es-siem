@@ -137,7 +137,7 @@ services:
       - "20514:20514"
     command: logstash -f /etc/logstash/conf.d/logstash.conf
     volumes:
-      - ./elasticsearch-siem/logstash/conf.d/logstash.conf:/etc/logstash/conf.d/logstash.conf
+      - ./elasticsearch-siem/logstash/conf.d:/etc/logstash/conf.d/logstash.conf
       - certs:$CERTS_DIR    
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"

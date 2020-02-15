@@ -1098,7 +1098,7 @@
         <Socket name="SecurityAuditToCEFSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                    <pattern>%escape{CEF}{CEF:0|Ping Identity|PingFederate|%X{pfversion}|%X{event}|rt=%d{MMM dd yyyy HH:mm:ss.SSS}|duid=%X{subject}|src=%X{ip}|msg=%X{status}|cs1=%X{app}|cs2=%X{connectionid}|cs3=%X{protocol}|dvchost=%X{host}|cs4=%X{role}|externalId=%X{trackingid}|cs5=%X{localuserid}|cs6=%X{attributes}%n}</pattern>
+                    <pattern>%escape{CEF}{CEF:0|Ping Identity|PingFederate|%X{pfversion}|%X{event}|%X{event}|0|rt=%d{MMM dd yyyy HH:mm:ss.SSS} duid=%X{subject} src=%X{ip} msg=%X{status} cs1Label=Target Application URL cs1=%X{app} cs2Label=Connection ID cs2=%X{connectionid} cs3Label=Protocol cs3=%X{protocol} dvchost=%X{host} cs4Label=Role cs4=%X{role} externalId=%X{trackingid} cs5Label=SP Local User ID cs5=%X{localuserid} cs6Label=Attributes cs6=%X{attributes} %n}</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

@@ -1136,7 +1136,7 @@
         <RollingFile name="SecurityAuditToCEFFile" fileName="${sys:pf.log.dir}/audit-cef.log"
             filePattern="${sys:pf.log.dir}/audit-cef.%d{yyyy-MM-dd}.log" >
             <PatternLayout>
-                <pattern>%escape{CEF}{CEF:0|Ping Identity|PingFederate|%X{pfversion}|%X{event}|%X{event}|0|rt=%d{MMM dd yyyy HH:mm:ss.SSS} duid=%X{subject} src=%X{ip} msg=%X{status} cs1Label=Target Application URL cs1=%X{app} cs2Label=Connection ID cs2=%X{connectionid} cs3Label=Protocol cs3=%X{protocol} dvchost=%X{host} cs4Label=Role cs4=%X{role} externalId=%X{trackingid} cs5Label=SP Local User ID cs5=%X{localuserid} cs6Label=Attributes cs6=%X{attributes} %n}</pattern>
+                <pattern>%escape{CEF}{CEF:0|PingIdentity|PingFederate|SecurityAudit|%X{pfversion}|%X{event}|%X{event}|%X{subject}|%X{ip}|%X{status}|%X{app}|%X{connectionid}|%X{protocol}|%X{host}|%X{role}|%X{trackingid}|%X{localuserid}|%X{attributes}}</pattern>
             </PatternLayout>
             <Policies>
                 <TimeBasedTriggeringPolicy />

@@ -1098,7 +1098,8 @@
         <Socket name="SecurityAuditToCEFSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                   <pattern>%escape{CEF}{CEF:0|Ping Identity|PingFederate|%X{pfversion}|%X{event}|%X{subject}|%X{ip}|%X{status}|%X{app}|%X{connectionid}|%X{protocol}|%X{host}|%X{role}|%X{trackingid}|%X{localuserid}|%X{attributes}}</pattern>
+                    <!-- MODIFIED CEF TO STANDARD FORMAT FOR ELK INJEST SIMPLICITY -- RYAN IVIS -->
+                    <pattern>%d| %X{trackingid}| %X{event}| %X{subject}| %X{ip} | %X{app}| %X{connectionid}| %X{protocol}| %X{host}| %X{role}| %X{status}| %X{adapterid}| %X{description}| %X{responsetime} %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

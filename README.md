@@ -1,40 +1,26 @@
-| Ping Stack with ElasticSearch SIEM |
-| Built by Ryan Ivis with Ping Identity |
+# Ping Stack with ElasticSearch SIEM
+#### Built by Ryan Ivis with Ping Identity
 
+------------
 
-STEP 1. 
-YOU MUST -- Configure a .env file before launching.
-
--Clone the project locally using git clone
--In the root folder along side the docker compose yml create a file name ".env"
-
-In the file place the following Contents.
-
-(**do not include the - lines)
-------------------------------------------------------
-
-COMPOSE_PROJECT_NAME=es
-
+Configure .env file in root directory first!
+------------
+> COMPOSE_PROJECT_NAME=es
 ELASTIC_VERSION=7.6.0
 ELASTIC_SECURITY=true
 ELASTIC_PASSWORD=2FederateM0re
-
 CERTS_DIR=/usr/share/elasticsearch/config/certificates
 KIB_CERTS_DIR=/usr/share/kibana/config/certificates
-
 PING_IDENTITY_DEVOPS_USER={YOUR DEVOPS USER NAME HERE}
 PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 
--------------------------------------------------------
+------------
 
 Configure your local docker client with at least 8GB Ram and 4CPU.
+Go get'em cowboy/girl!!!
 
-Go get'em cowboy!
-
-
-This will spin up a demo lab for Ping Fed / Directory / etc images. Along with a ElasticSearch 2 Node Stack + Kibana + Logstash.
-
-Log parsing will come soon.
+This will spin up a demo lab for Ping Fed / Directory / etc images.
+Along with a ElasticSearch 2 Node Stack + Kibana + Logstash.
 
 # Server Profiles
 

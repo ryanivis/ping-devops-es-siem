@@ -7,7 +7,7 @@ THIS IS NOT INTENDED FOR PRODUCTION. THERE ARE DEFAULT PASSWORDS THAT MUST BE MO
 
 
 Demo Ping Fed Dashboard (threat intel and other enrichments coming soon)  
-![alt text](https://github.com/ryanivis/ping-devops-es-siem/images/dashboard.png "PingFed Demo Dashboard")
+![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/dashboard.png "PingFed Demo Dashboard")
 
  
 

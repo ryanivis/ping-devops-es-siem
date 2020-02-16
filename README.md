@@ -10,7 +10,6 @@ Configure .env file in root directory first!
 `ELASTIC_SECURITY=true`  
 `ELASTIC_PASSWORD=2FederateM0re`  
 `CERTS_DIR=/usr/share/elasticsearch/config/certificates`  
-`KIB_CERTS_DIR=/usr/share/kibana/config/certificates`  
 `PING_IDENTITY_DEVOPS_USER={YOUR DEVOPS USER NAME HERE}`  
 `PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}`  
 

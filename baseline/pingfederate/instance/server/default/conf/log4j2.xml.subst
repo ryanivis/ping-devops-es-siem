@@ -1098,7 +1098,7 @@
         <Socket name="SecurityAuditToCEFSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_AUDIT}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                    <pattern>| %d{MMM dd yyyy HH:mm:ss.SSS}| PingIdentity| PingFederate| %X{trackingid}| %X{event}| %X{subject}| %X{ip} | %X{app}| %X{connectionid}| %X{protocol}| %X{host}| %X{role}| %X{status}| %X{adapterid}| %X{description}| %X{responsetime}| %X{initiator} %n</pattern>
+                    <pattern>| %d{MMM dd yyyy HH:mm:ss.SSS}| PingIdentity| PingFederate| %X{trackingid}| %X{event}| %X{subject}| %X{ip}| %X{app}| %X{connectionid}| %X{protocol}| %X{host}| %X{role}| %X{status}| %X{adapterid}| %X{description}| %X{responsetime}| %X{initiator} %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

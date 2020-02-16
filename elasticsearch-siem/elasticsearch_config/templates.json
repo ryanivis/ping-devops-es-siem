@@ -1,4 +1,3 @@
-PUT _template/pf-audit
 {
   "order": 1,
   "index_patterns": [

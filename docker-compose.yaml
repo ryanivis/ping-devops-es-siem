@@ -114,8 +114,8 @@ services:
     networks:
     - pingnet
 
-  create_certs:
-    container_name: create_certs
+  configure_es_stack:
+    container_name: configure_es_stack
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     command: >
       bash -c '
@@ -124,10 +124,18 @@ services:
           unzip /certs/bundle.zip -d /certs;
         fi;
         chown -R 1000:0 /certs
+
+        sh /usr/share/elasticsearch/config/bootstrap/es_configurationloader.sh
       '
     user: "0"
     working_dir: /usr/share/elasticsearch
-    volumes: ['certs:/certs', './elasticsearch-siem/cert_config:/usr/share/elasticsearch/config/certificates']
+    depends_on: {"es01": {"condition": "service_healthy"}}
+    volumes: 
+      - certs:/certs
+      - ./elasticsearch-siem/cert_config:/usr/share/elasticsearch/config/certificates
+      - ./elasticsearch-siem/elasticsearch_config:/usr/share/elasticsearch/config/es_config
+      - ./elasticsearch-siem/kibana_config:/usr/share/elasticsearch/config/kibana_config
+      - ./elasticsearch-siem/ping_siem_config_bootstrap:/usr/share/elasticsearch/config/bootstrap
     networks:
       - pingnet
 
@@ -156,12 +164,10 @@ services:
       XPACK_MONITORING_ELASTICSEARCH_SSL_CERTIFICATE_AUTHORITY: $CERTS_DIR/es01/es01.crt
     networks:
       - pingnet
-    depends_on: {"es01": {"condition": "service_healthy"}}
 
   kibana:
     image: 'docker.elastic.co/kibana/kibana:7.6.0'
     container_name: kibana
-    depends_on: {"es01": {"condition": "service_healthy"}}
     environment:
       ELASTICSEARCH_USERNAME: "elastic"
       ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
@@ -181,7 +187,6 @@ services:
       - "5601:5601"
     networks:
       - pingnet
-    depends_on: {"es01": {"condition": "service_healthy"}}
 
 networks:
   pingnet:

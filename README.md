@@ -1,6 +1,16 @@
 # Ping Stack with ElasticSearch SIEM
 #### Built by Ryan Ivis with Ping Identity
 
+This project is being used to build out a side-car demo 'SIEM' that will consume ping logs and provide pre-canned dashboards. It is under active development.  
+
+THIS IS NOT INTENDED FOR PRODUCTION. THERE ARE DEFAULT PASSWORDS THAT MUST BE MODIFIED.  
+
+
+Demo Ping Fed Dashboard (threat intel and other enrichments coming soon)  
+![alt text](https://github.com/ryanivis/ping-devops-es-siem/images/dashboard.png "PingFed Demo Dashboard")
+
+ 
+
 ------------
 
 Configure .env file in root directory first!
@@ -14,6 +24,10 @@ Configure .env file in root directory first!
 `PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}`  
 
 ------------
+
+Important Notes
+- Do not update the above elastic password without first updating the same password within the logstash pipeline as well as bootstraping scripts for elasticsearch found in the corrisponding sub folders.  
+
 
 Configure your local docker client with at least 8GB Ram and 4CPU.
 Go get'em cowboy/girl!!!

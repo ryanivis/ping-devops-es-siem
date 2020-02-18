@@ -43,7 +43,9 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 ### Important Notes
 - Allow 5-10 min for the stack to come up!  
 - If updating the Elastic Password it must also be updated in the logstash pipeline configuration
--- ping-devops-es-siem/elasticsearch-siem/logstash/conf.d/logstash.conf  
+
+- ping-devops-es-siem/elasticsearch-siem/logstash/conf.d/logstash.conf  
+
 - This uses the default elastic user. This is bad practice and you should configure service users for logstash / kibana.
 - Configure your local docker client with at least 8GB Ram and 4CPU.   
 - This will spin up a demo lab for Ping Fed / Directory / etc images.   
@@ -51,7 +53,8 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 ------------
 ## Kibana Saved Objects
 - Saved Objects can be loaded by going to 'saved objects' under kibana settings and exporting all. Save the file in the...  
-- ./elasticsearch-siem/kibana_config/kib_base.ndjson.  
+
+- ./elasticsearch-siem/kibana_config/kib_base.ndjson  
 
 - They will be reloaded upon Kibana Start!!! This enables you to save objects for dashboards and reload!
 
@@ -59,6 +62,8 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 ## ElasticSearch Template for PF Audit Logs
 - Elasticsearch will load the PF-Audit Template such that logs will have the correct field types for searching ONLY working for the AUDIT logs if you use the Included LOG4J format within this PF baseline.
 - The Scripts will load this template once cluster state is green.
+
+- ./elasticsearch-siem/elasticsearch_config/templates.json
 
 ------------
 ## Logstash Pipeline
@@ -73,7 +78,7 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 - Ping Fed ships logs on 2 different SYSLOG PORTS, with a CUSTOM mapping. This enables Logstash to use it's CSV filter to parse the logs quickly and map them. This isn't the fastest way to do this but for demo's it's more than sufficent.
 
 ------------
-##Ping Dev-Ops Included Documentation
+## Ping Dev-Ops Included Documentation
 
 
 ## Server Profiles

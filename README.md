@@ -52,6 +52,7 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 
 
 ### Kibana Access
+- ** WAIT UNTIL PING FED IS FULLY STARTED OR DASHBOARDS WILL NOT BE LOADED YET **
 - Kibana listens on https://{IP}:5601
 - UN is configured as "elastic"
 - PASSWORD is configured as "2FederateM0re"

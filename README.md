@@ -17,11 +17,11 @@ Threat Feeds are updated every 2000 seconds!!!
 ------------
 YOU MUST!!
 
-Configure .env file in root directory first for this to work!!!
+- Configure .env file in root directory first for this to work!!!  
 
-ALSO ENSURE YOU HAVE 8GB RAM AND 3-4 CPU ALLOCATED FOR DOCKER.
+- ALSO ENSURE YOU HAVE 8GB RAM AND 3-4 CPU ALLOCATED FOR DOCKER.  
 
-TESTED ON UBUNTU LINUX AS WELL AS MACOS DOCKER
+- TESTED ON UBUNTU LINUX AS WELL AS MACOS DOCKER.  
 ------------
 `COMPOSE_PROJECT_NAME=es`   
 `ELASTIC_VERSION=7.6.0`  
@@ -37,18 +37,18 @@ Important Notes
 - Do not update the above elastic password without first updating the same password within the logstash pipeline as well as bootstraping scripts.   for elasticsearch found in the corrisponding sub folders.   
 
 
-Configure your local docker client with at least 8GB Ram and 4CPU.  
-Go get'em cowboy/girl!!!  
+- Configure your local docker client with at least 8GB Ram and 4CPU.  
+- Go get'em cowboy/girl!!!  
 
-This will spin up a demo lab for Ping Fed / Directory / etc images.  
-Along with a ElasticSearch 2 Node Stack + Kibana + Logstash.  
+- This will spin up a demo lab for Ping Fed / Directory / etc images.  
+- Along with a ElasticSearch 2 Node Stack + Kibana + Logstash.  
 
 ------------
 ## Kibana Saved Objects
-Saved Objects can be loaded by going to 'saved objects' under kibana settings and exporting all. Save the file in the...  
-./elasticsearch-siem/kibana_config/kib_base.ndjson.  
+- Saved Objects can be loaded by going to 'saved objects' under kibana settings and exporting all. Save the file in the...  
+- ./elasticsearch-siem/kibana_config/kib_base.ndjson.  
 
-They will be reloaded upon Kibana Start!!!  
+- They will be reloaded upon Kibana Start!!!  
 
 ------------
 

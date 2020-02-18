@@ -73,7 +73,9 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 	- ping-devops-es-siem/elasticsearch-siem/ping_siem_config_bootstrap/es_configurationloader.sh
 	- ping-devops-es-siem/.env 
 - This uses the default elastic user. This is bad practice and you should configure service users for logstash / kibana.
-- Configure your local docker client with at least 8GB Ram and 4CPU.   
+- Configure your local docker client with at least 8GB Ram and 4CPU.
+- Server Side TLS Certificate Validation is not enabled on the demo it is set to 'none' in the ES configuration
+- TLS is used betweeen ES nodes, as well as between Logstash and Kibana.
 
 ------------
 ## Kibana Saved Objects

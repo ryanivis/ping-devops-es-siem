@@ -34,8 +34,8 @@ Threat Feeds are updated every 2000 seconds!!!
 
 
 Important Notes
+- Allow 5-10 min for the stack to come up!  
 - Do not update the above elastic password without first updating the same password within the logstash pipeline as well as bootstraping scripts.   for elasticsearch found in the corrisponding sub folders.   
-
 
 - Configure your local docker client with at least 8GB Ram and 4CPU.  
 - Go get'em cowboy/girl!!!  

@@ -16,7 +16,7 @@ The goal of this project is to have pre-built security dashboards to ride along 
 - **THIS IS NOT INTENDED FOR PRODUCTION. THERE ARE DEFAULT PASSWORDS THAT MUST BE MODIFIED**...   
 - **IF YOU MODIFY THE ELASTICSEARCH PASSWORD, YOU NEED TO UPDATE IT IN A FEW LOCATIONS** - will fix later...       
 - **THERE ARE PERSISTANT DISKS USED FOR ES, AND ES CERTS TO CLEAR THEM WHEN YOU ARE DONE PLAYING**...   
-`docker volume prune`  
+	- `docker volume prune`  
 
 ## Dashboard Examples
 ------------
@@ -47,8 +47,8 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 ```
 ------------
 - Configure Docker to have 8GB RAM and 4CPU  
-- Start the stack with `docker-compose up -d`  
-- Monitor the stack with `docker-compose logs --follow`  
+	- Start the stack with `docker-compose up -d`  
+	- Monitor the stack with `docker-compose logs --follow`  
 
 
 ### Kibana Access
@@ -60,8 +60,7 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 ### Important Notes
 - Allow 5-10 min for the stack to come up!  
 - If updating the Elastic Password it must also be updated in the logstash pipeline configuration
-
-- ping-devops-es-siem/elasticsearch-siem/logstash/conf.d/logstash.conf  
+	- ping-devops-es-siem/elasticsearch-siem/logstash/conf.d/logstash.conf  
 
 - This uses the default elastic user. This is bad practice and you should configure service users for logstash / kibana.
 - Configure your local docker client with at least 8GB Ram and 4CPU.   
@@ -70,8 +69,7 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 ------------
 ## Kibana Saved Objects
 - Saved Objects can be loaded by going to 'saved objects' under kibana settings and exporting all. Save the file in the...  
-
-- ./elasticsearch-siem/kibana_config/kib_base.ndjson  
+	- ./elasticsearch-siem/kibana_config/kib_base.ndjson  
 
 - They will be reloaded upon Kibana Start!!! This enables you to save objects for dashboards and reload!
 
@@ -79,8 +77,7 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 ## ElasticSearch Template for PF Audit Logs
 - Elasticsearch will load the PF-Audit Template such that logs will have the correct field types for searching ONLY working for the AUDIT logs if you use the Included LOG4J format within this PF baseline.
 - The Scripts will load this template once cluster state is green.
-
-- ./elasticsearch-siem/elasticsearch_config/templates.json
+	- ./elasticsearch-siem/elasticsearch_config/templates.json
 
 ------------
 ## Logstash Pipeline

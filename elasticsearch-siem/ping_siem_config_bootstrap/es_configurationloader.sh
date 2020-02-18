@@ -18,7 +18,14 @@ curl -X PUT "https://es01:9200/_template/pf_audit?pretty" --insecure -u elastic:
 echo "loading kibana saved objects"
 curl -X POST "https://kibana:5601/api/saved_objects/_import" --insecure -u elastic:2FederateM0re -H "kbn-xsrf: true" --form file="@/usr/share/elasticsearch/config/kibana_config/kib_base.ndjson"
 
+echo "starting and running enrichment process"
 
+while [ 1 -eq 1 ]
+do
+  echo "Starting enrichment pull..."
+  python /usr/share/elasticsearch/config/bootstrap/enrichment.py
+  sleep 2000
+done
 
 
 

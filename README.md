@@ -6,10 +6,12 @@ This project is being used to build out a side-car demo 'SIEM' that will consume
 THIS IS NOT INTENDED FOR PRODUCTION. THERE ARE DEFAULT PASSWORDS THAT MUST BE MODIFIED.  
 
 
-Demo Ping Fed Dashboard (threat intel and other enrichments coming soon)  
+Demo Ping Fed Dashboard
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/dashboard.png "PingFed Demo Dashboard")
 
  
+Threat Intel and TOR Endpoints are being provided by AlienVault and the TOR Network Endpoint List.
+
 
 ------------
 

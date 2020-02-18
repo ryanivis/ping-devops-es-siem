@@ -15,13 +15,10 @@ Threat Feeds are updated every 2000 seconds!!!
 
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/Architecture.png "Architecture Overview")
 ------------
-YOU MUST!!
+DIRECTIONS
 
-- Configure .env file in root directory first for this to work!!!  
-
-- ALSO ENSURE YOU HAVE 8GB RAM AND 3-4 CPU ALLOCATED FOR DOCKER.  
-
-- TESTED ON UBUNTU LINUX AS WELL AS MACOS DOCKER.  
+- Clone this project to your local disk.  
+- Configure .env file in root path of the clone and place these lines in it (update your devops details).      
 ------------
 `COMPOSE_PROJECT_NAME=es`   
 `ELASTIC_VERSION=7.6.0`  
@@ -29,9 +26,12 @@ YOU MUST!!
 `ELASTIC_PASSWORD=2FederateM0re`  
 `CERTS_DIR=/usr/share/elasticsearch/config/certificates`  
 `PING_IDENTITY_DEVOPS_USER={YOUR DEVOPS USER NAME HERE}`  
-`PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}`  
-
+`PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}` 
 ------------
+- Configure Docker to have 8GB RAM and 4CPU  
+- Start the stack with 'docker-compose up -d'   
+
+
 
 Important Notes
 - Do not update the above elastic password without first updating the same password within the logstash pipeline as well as bootstraping scripts.   for elasticsearch found in the corrisponding sub folders.   

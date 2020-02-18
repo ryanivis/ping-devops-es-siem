@@ -11,11 +11,14 @@ Demo Ping Fed Dashboard
 
  
 Threat Intel and TOR Endpoints are being provided by AlienVault and the TOR Network Endpoint List.
+Threat Feeds are updated every 2000 seconds!!!
 
-
+![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/Architecture.png "Architecture Overview")
 ------------
-
-Configure .env file in root directory first!
+YOU MUST!!
+Configure .env file in root directory first for this to work!!!
+ALSO ENSURE YOU HAVE 8GB RAM AND 3-4 CPU ALLOCATED FOR DOCKER.
+TESTED ON UBUNTU LINUX AS WELL AS MACOS DOCKER
 ------------
 `COMPOSE_PROJECT_NAME=es`   
 `ELASTIC_VERSION=7.6.0`  
@@ -36,6 +39,16 @@ Go get'em cowboy/girl!!!
 
 This will spin up a demo lab for Ping Fed / Directory / etc images.
 Along with a ElasticSearch 2 Node Stack + Kibana + Logstash.
+
+------------
+## Kibana Saved Objects
+Saved Objects can be loaded by going to 'saved objects' under kibana settings and exporting all. Save the file in the
+./elasticsearch-siem/kibana_config/kib_base.ndjson
+
+They will be reloaded upon Kibana Start!!!
+
+------------
+
 
 # Server Profiles
 

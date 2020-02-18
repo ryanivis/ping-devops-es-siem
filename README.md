@@ -13,8 +13,9 @@ Demo Ping Fed Dashboard
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/dashboard.png "PingFed Demo Dashboard")
 
  
-Threat Intel and TOR Endpoints are being provided by AlienVault and the TOR Network Endpoint List.  
-Threat Feeds are updated every 2000 seconds!!!
+- Threat Intel and TOR Endpoints are being provided by AlienVault and the TOR Network Endpoint List.  
+- Threat Feeds are updated every 2000 seconds!!!
+
 
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/Architecture.png "Architecture Overview")
 ------------

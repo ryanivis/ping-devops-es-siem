@@ -15,7 +15,7 @@ Threat Feeds are updated every 2000 seconds!!!
 
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/Architecture.png "Architecture Overview")
 ------------
-## DIRECTIONS
+## Directions
 
 - Clone this project to your local disk.  
 - Configure .env file in root path of the clone and place these lines in it (update your devops details).      

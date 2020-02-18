@@ -50,6 +50,13 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 	- Start the stack with `docker-compose up -d`  
 	- Monitor the stack with `docker-compose logs --follow`  
 
+------------
+
+## Directions to change ELASTIC PASSWORD
+- ** If updating the Elastic Password it must be updated in the following 3 locations or the stack will fail. **
+	- ping-devops-es-siem/elasticsearch-siem/logstash/conf.d/logstash.conf 
+	- ping-devops-es-siem/elasticsearch-siem/ping_siem_config_bootstrap/es_configurationloader.sh 
+	- ping-devops-es-siem/.env
 
 ### Kibana Access
 - ** WAIT UNTIL PING FED IS FULLY STARTED OR DASHBOARDS WILL NOT BE LOADED YET **

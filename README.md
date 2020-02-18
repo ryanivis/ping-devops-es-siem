@@ -4,6 +4,14 @@
 The goal of this project is to have pre-built security dashboards to ride along side our products. The inital phase is currently working on PingFederate Audit Logs. 
 
 
+## Status
+| Phase    |                                          | Log Status  | Dashboard Status |
+|----------|------------------------------------------|-------------|------------------|
+| Phase 1  | Ping Federate Audit Logs                 | Complete    | Complete         |
+| Phase 2  | Ping Directory Logs                      | In Progress | In Progress      |
+| Phase 3  | Ping Access Logs                         | Future      | Future           |
+| Phase 4  | Ping Data Console Logs                   | Future      | Future           |
+
 ## Important Note
 - **THIS IS NOT INTENDED FOR PRODUCTION. THERE ARE DEFAULT PASSWORDS THAT MUST BE MODIFIED**...   
 - **IF YOU MODIFY THE ELASTICSEARCH PASSWORD, YOU NEED TO UPDATE IT IN A FEW LOCATIONS** - will fix later...       

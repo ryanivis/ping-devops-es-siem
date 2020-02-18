@@ -31,21 +31,21 @@ TESTED ON UBUNTU LINUX AS WELL AS MACOS DOCKER
 ------------
 
 Important Notes
-- Do not update the above elastic password without first updating the same password within the logstash pipeline as well as bootstraping scripts for elasticsearch found in the corrisponding sub folders.  
+- Do not update the above elastic password without first updating the same password within the logstash pipeline as well as bootstraping scripts.   for elasticsearch found in the corrisponding sub folders.   
 
 
-Configure your local docker client with at least 8GB Ram and 4CPU.
-Go get'em cowboy/girl!!!
+Configure your local docker client with at least 8GB Ram and 4CPU.  
+Go get'em cowboy/girl!!!  
 
-This will spin up a demo lab for Ping Fed / Directory / etc images.
-Along with a ElasticSearch 2 Node Stack + Kibana + Logstash.
+This will spin up a demo lab for Ping Fed / Directory / etc images.  
+Along with a ElasticSearch 2 Node Stack + Kibana + Logstash.  
 
 ------------
 ## Kibana Saved Objects
-Saved Objects can be loaded by going to 'saved objects' under kibana settings and exporting all. Save the file in the
-./elasticsearch-siem/kibana_config/kib_base.ndjson
+Saved Objects can be loaded by going to 'saved objects' under kibana settings and exporting all. Save the file in the...  
+./elasticsearch-siem/kibana_config/kib_base.ndjson.  
 
-They will be reloaded upon Kibana Start!!!
+They will be reloaded upon Kibana Start!!!  
 
 ------------
 

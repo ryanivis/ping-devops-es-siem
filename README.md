@@ -43,6 +43,12 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 - Monitor the stack with `docker-compose logs --follow`  
 
 
+### Kibana Access
+- Kibana listens on https://{IP}:5601
+- UN is configured as "elastic"
+- PASSWORD is configured as "2FederateM0re"
+
+
 ### Important Notes
 - Allow 5-10 min for the stack to come up!  
 - If updating the Elastic Password it must also be updated in the logstash pipeline configuration

@@ -7,7 +7,7 @@ The goal of this project is to have pre-built security dashboards to ride along 
 ## Status
 | Phase    | Ping Product                             | Log Status  | Dashboard Status |
 |----------|------------------------------------------|-------------|------------------|
-| Phase 1  | Ping Federate Audit Logs                 | Complete    | Complete         |
+| Phase 1  | Ping Federate Audit Logs                 | Complete    | Beta             |
 | Phase 2  | Ping Directory Logs                      | In Progress | In Progress      |
 | Phase 3  | Ping Access Logs                         | Future      | Future           |
 | Phase 4  | Ping Data Console Logs                   | Future      | Future           |

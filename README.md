@@ -42,13 +42,11 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 
 ### Important Notes
 - Allow 5-10 min for the stack to come up!  
-- If updating the Elastic Password it must also be updated in the logstash pipeline configuration  
-
-- Configure your local docker client with at least 8GB Ram and 4CPU.  
-- Go get'em cowboy/girl!!!  
-
-- This will spin up a demo lab for Ping Fed / Directory / etc images.  
-- Along with a ElasticSearch 2 Node Stack + Kibana + Logstash.  
+- If updating the Elastic Password it must also be updated in the logstash pipeline configuration
+-- ping-devops-es-siem/elasticsearch-siem/logstash/conf.d/logstash.conf  
+- This uses the default elastic user. This is bad practice and you should configure service users for logstash / kibana.
+- Configure your local docker client with at least 8GB Ram and 4CPU.   
+- This will spin up a demo lab for Ping Fed / Directory / etc images.   
 
 ------------
 ## Kibana Saved Objects

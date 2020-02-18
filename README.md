@@ -55,16 +55,34 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 - Saved Objects can be loaded by going to 'saved objects' under kibana settings and exporting all. Save the file in the...  
 - ./elasticsearch-siem/kibana_config/kib_base.ndjson.  
 
-- They will be reloaded upon Kibana Start!!!  
+- They will be reloaded upon Kibana Start!!! This enables you to save objects for dashboards and reload!
 
 ------------
+## ElasticSearch Template for PF Audit Logs
+- Elasticsearch will load the PF-Audit Template such that logs will have the correct field types for searching ONLY working for the AUDIT logs if you use the Included LOG4J format within this PF baseline.
+- The Scripts will load this template once cluster state is green.
+
+------------
+## Logstash Pipeline
+- TOR Enrichment
+- Threat Intel (Alien Vault Provided)
+- GEO IP Lookup
+- Data Parsing
+- Logstash Pipeline is stored in the folder structure. It includes Parsers for Audit and Provisioner.
+
+------------
+## Ping Federate
+- Ping Fed ships logs on 2 different SYSLOG PORTS, with a CUSTOM mapping. This enables Logstash to use it's CSV filter to parse the logs quickly and map them. This isn't the fastest way to do this but for demo's it's more than sufficent.
+
+------------
+##Ping Dev-Ops Included Documentation
 
 
-# Server Profiles
+## Server Profiles
 
 Ping Identity Server Profiles are used to provide the configuration, data, environment details to Ping Identity Docker Images.
 
-## Available Server Profiles
+### Available Server Profiles
 
 There are several Ping Identity Server Profiles available in the Ping Identity Github repositories. They are outlined in the table below.
 
@@ -74,7 +92,7 @@ There are several Ping Identity Server Profiles available in the Ping Identity G
 | [Baseline](https://github.com/pingidentity/pingidentity-server-profiles/tree/master/baseline) | Ping Identity products with full integration |
 | [Simple Sync](https://github.com/pingidentity/pingidentity-server-profiles/tree/master/simple-sync) | DataSync server sync'ing between two PingDirectory trees |
 
-## Playground Server Profiles
+### Playground Server Profiles
 
 There is a Github Repository containing samples, experimental, training types of server profiles that may be created to help with examples and getting started projects. These are guaranteed to be documented as they are often one off examples of different concepts. Some of these products include:
 

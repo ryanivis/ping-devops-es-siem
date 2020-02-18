@@ -1,6 +1,5 @@
 #!/bin/bash
-
-#Simple script to load ping fed audit template and kibana saved ndjson
+#Simple script to load ping fed audit template and kibana saved ndjson.
 
 es_status="red"
 
@@ -19,6 +18,12 @@ echo "loading kibana saved objects"
 curl -X POST "https://kibana:5601/api/saved_objects/_import" --insecure -u elastic:2FederateM0re -H "kbn-xsrf: true" --form file="@/usr/share/elasticsearch/config/kibana_config/kib_base.ndjson"
 
 echo "starting and running enrichment process"
+
+
+#
+# !!!! ENDLESS LOOP
+# THIS WILL PULL THREAT INTEL EVERY 2000 SECONDS AND PLACE IN THE ENRICHMENT CACHE FOLDER
+#
 
 while [ 1 -eq 1 ]
 do

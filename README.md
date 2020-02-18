@@ -7,6 +7,9 @@ The goal of this project is to have pre-built security dashboards to ride along 
 ## Important Note
 THIS IS NOT INTENDED FOR PRODUCTION. THERE ARE DEFAULT PASSWORDS THAT MUST BE MODIFIED.  
 
+THERE ARE PERSISTANT DISKS USED FOR ES, AND ES CERTS TO CLEAR THEM WHEN YOU ARE DONE PLAYING...  
+`docker volume prune`  
+
 ## Dashboard Examples
 ------------
 Demo Ping Fed Dashboard

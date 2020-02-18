@@ -16,8 +16,11 @@ Threat Feeds are updated every 2000 seconds!!!
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/Architecture.png "Architecture Overview")
 ------------
 YOU MUST!!
+
 Configure .env file in root directory first for this to work!!!
+
 ALSO ENSURE YOU HAVE 8GB RAM AND 3-4 CPU ALLOCATED FOR DOCKER.
+
 TESTED ON UBUNTU LINUX AS WELL AS MACOS DOCKER
 ------------
 `COMPOSE_PROJECT_NAME=es`   

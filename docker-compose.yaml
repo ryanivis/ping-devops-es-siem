@@ -152,10 +152,11 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
     environment:
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+      - THREAT_INTEL_PULL_INTERVAL=600
     command: > 
      bash -c '
         sh /usr/share/elasticsearch/config/bootstrap/dep_install.sh
-        sh /usr/share/elasticsearch/config/bootstrap/es_configurationloader.sh
+        sh /usr/share/elasticsearch/config/bootstrap/enrichment_wrapper.sh
       '
     user: "0"
     working_dir: /usr/share/elasticsearch

@@ -10,5 +10,5 @@ while [ 1 -eq 1 ]
 do
   echo "Starting enrichment pull..."
   python /usr/share/elasticsearch/config/bootstrap/enrichment.py
-  sleep 2000
+  sleep $THREAT_INTEL_PULL_INTERVAL
 done

@@ -183,7 +183,7 @@ services:
       - certs:$CERTS_DIR
       - ./elasticsearch-siem/enrichment_cache:/etc/logstash/enrichment
     environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
       CONFIG_RELOAD_AUTOMATIC: "true"
       CONFIG_RELOAD_INTERVAL: "5s"
       LOG_FORMAT: "json"

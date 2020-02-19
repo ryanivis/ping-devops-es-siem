@@ -26,7 +26,7 @@ Demo Ping Fed Dashboard
 
  
 - Threat Intel and TOR Endpoints are being provided by AlienVault and the TOR Network Endpoint List.  
-- Threat Feeds are updated every 2000 seconds!!!
+- Threat Feeds are updated on an interval via seting a var in docker-compose !!!
 
 
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/Architecture.png "Architecture Overview")

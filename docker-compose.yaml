@@ -176,6 +176,7 @@ services:
       - "9600:9600"
       - "20514:20514"
       - "20515:20515"
+      - "20516:20516"
     command: logstash -f /etc/logstash/conf.d/logstash.conf
     volumes:
       - ./elasticsearch-siem/logstash/conf.d:/etc/logstash/conf.d/logstash.conf

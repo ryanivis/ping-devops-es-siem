@@ -1,9 +1,9 @@
-version: "2.2"
+version: "3.7"
 
 services:
   pingfederate:
     image: pingidentity/pingfederate:edge
-    command: wait-for pingdirectory:389 -t 500 -- entrypoint.sh start-server
+    command: wait-for pingdirectory:389 -t 800 -- entrypoint.sh start-server
     environment:
       - SERVER_PROFILE_URL=https://github.com/ryanivis/ping-devops-es-siem.git
       - SERVER_PROFILE_PATH=baseline/pingfederate
@@ -20,7 +20,10 @@ services:
       - 9999:9999
     networks:
       - pingnet
+    depends_on:
+      - pingdirectory
  
+
   pingdirectory:
     image: pingidentity/pingdirectory:latest
     environment:
@@ -41,6 +44,7 @@ services:
       - 8443:8443
     networks:
       - pingnet
+
 
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:$ELASTIC_VERSION
@@ -78,6 +82,7 @@ services:
     networks:
       - pingnet
 
+
   es02:
     image: docker.elastic.co/elasticsearch/elasticsearch:$ELASTIC_VERSION
     container_name: es02
@@ -114,9 +119,12 @@ services:
     networks:
     - pingnet
 
-  configure_es_stack:
-    container_name: configure_es_stack
+
+  configure_es_certs_state:
+    container_name: configure_es_certs_state
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    environment:
+      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
     command: >
       bash -c '
         if [[ ! -f /certs/bundle.zip ]]; then
@@ -125,21 +133,40 @@ services:
         fi;
         chown -R 1000:0 /certs
 
+        sh /usr/share/elasticsearch/config/bootstrap/saved_state_loader.sh
+      '
+    user: "0"
+    working_dir: /usr/share/elasticsearch
+    volumes: 
+      - certs:/certs
+      - ./elasticsearch-siem/cert_config:/usr/share/elasticsearch/config/certificates
+    networks:
+      - pingnet
+
+
+  enrichment_service:
+    container_name: enrichment_service
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    environment:
+      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+    command: > 
+     bash -c '
         sh /usr/share/elasticsearch/config/bootstrap/dep_install.sh
         sh /usr/share/elasticsearch/config/bootstrap/es_configurationloader.sh
       '
     user: "0"
     working_dir: /usr/share/elasticsearch
-    depends_on: {"es01": {"condition": "service_healthy"}}
     volumes: 
-      - certs:/certs
-      - ./elasticsearch-siem/cert_config:/usr/share/elasticsearch/config/certificates
       - ./elasticsearch-siem/elasticsearch_config:/usr/share/elasticsearch/config/es_config
       - ./elasticsearch-siem/kibana_config:/usr/share/elasticsearch/config/kibana_config
       - ./elasticsearch-siem/ping_siem_config_bootstrap:/usr/share/elasticsearch/config/bootstrap
       - ./elasticsearch-siem/enrichment_cache:/usr/share/elasticsearch/enrichment
     networks:
       - pingnet
+    depends_on:
+      - es01
+      - es02
+
 
   logstash:
     image: docker.elastic.co/logstash/logstash:$ELASTIC_VERSION
@@ -168,6 +195,7 @@ services:
     networks:
       - pingnet
 
+
   kibana:
     image: docker.elastic.co/kibana/kibana:$ELASTIC_VERSION
     container_name: kibana
@@ -191,8 +219,10 @@ services:
     networks:
       - pingnet
 
+
 networks:
   pingnet:
+
 
 volumes:
   data01:

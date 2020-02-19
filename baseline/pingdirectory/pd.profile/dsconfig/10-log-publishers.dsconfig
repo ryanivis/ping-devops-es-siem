@@ -12,4 +12,5 @@ dsconfig create-log-publisher \
     --set enabled:true  \
     --set include-instance-name:true  \
     --set include-requester-ip-address:true  \
-    --set server-port:20516
+    --set server-port:20516  \
+    --set server-host-name:logstash

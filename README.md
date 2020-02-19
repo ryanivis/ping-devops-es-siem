@@ -9,9 +9,8 @@ The goal of this project is to have pre-built security dashboards to ride along 
 |----------|------------------------------------------|-------------|------------------|
 | Phase 1  | Ping Federate Audit Logs                 | Complete    | Beta             |
 | Phase 2  | LDAP Integrate ElasticSearch / Kibana    | Researching | N/A              |
-| Phase 3  | Ping Directory Logs                      | In Progress | In Progress      |
+| Phase 3  | Ping Directory Logs                      | Complete    | In Progress      |
 | Phase 4  | Ping Access Logs                         | Future      | Future           |
-| Phase 5  | Ping Data Console Logs                   | Future      | Future           |
 
 ## Important Note
 - **THIS IS NOT INTENDED FOR PRODUCTION. THERE ARE DEFAULT PASSWORDS THAT MUST BE MODIFIED**...   

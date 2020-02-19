@@ -140,6 +140,9 @@ services:
     volumes: 
       - certs:/certs
       - ./elasticsearch-siem/cert_config:/usr/share/elasticsearch/config/certificates
+      - ./elasticsearch-siem/elasticsearch_config:/usr/share/elasticsearch/config/es_config
+      - ./elasticsearch-siem/kibana_config:/usr/share/elasticsearch/config/kibana_config
+      - ./elasticsearch-siem/ping_siem_config_bootstrap:/usr/share/elasticsearch/config/bootstrap
     networks:
       - pingnet
 
@@ -157,8 +160,6 @@ services:
     user: "0"
     working_dir: /usr/share/elasticsearch
     volumes: 
-      - ./elasticsearch-siem/elasticsearch_config:/usr/share/elasticsearch/config/es_config
-      - ./elasticsearch-siem/kibana_config:/usr/share/elasticsearch/config/kibana_config
       - ./elasticsearch-siem/ping_siem_config_bootstrap:/usr/share/elasticsearch/config/bootstrap
       - ./elasticsearch-siem/enrichment_cache:/usr/share/elasticsearch/enrichment
     networks:
@@ -192,6 +193,7 @@ services:
       XPACK_MONITORING_ELASTICSEARCH_PASSWORD: $ELASTIC_PASSWORD
       XPACK_MONITORING_ELASTICSEARCH_HOSTS: "https://es01:9200"
       XPACK_MONITORING_ELASTICSEARCH_SSL_CERTIFICATE_AUTHORITY: $CERTS_DIR/es01/es01.crt
+      ELASTIC_PASSWORD: $ELASTIC_PASSWORD
     networks:
       - pingnet
 

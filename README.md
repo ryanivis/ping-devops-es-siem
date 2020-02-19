@@ -52,25 +52,18 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 
 ------------
 
-## Directions to change ELASTIC PASSWORD
-- ** If updating the Elastic Password it must be updated in the following 3 locations or the stack will fail. **
-	- ping-devops-es-siem/elasticsearch-siem/logstash/conf.d/logstash.conf 
-	- ping-devops-es-siem/elasticsearch-siem/ping_siem_config_bootstrap/es_configurationloader.sh 
-	- ping-devops-es-siem/.env
 
-### Kibana Access
+## Kibana Access
 - ** WAIT UNTIL PING FED IS FULLY STARTED OR DASHBOARDS WILL NOT BE LOADED YET **
 - Kibana listens on https://{IP}:5601
 - UN is configured as "elastic"
 - PASSWORD is configured as "2FederateM0re" 
 
 
-### Important Notes <--READ
+## Important Notes <--READ
 - Allow 5-10 min for the stack to come up!
 - Do not access kibana until Ping Fed is loaded or you will find no dashboards / saved objects loaded.  
 - ** If updating the Elastic Password it must also be updated in the logstash pipeline configuration **
-	- ping-devops-es-siem/elasticsearch-siem/logstash/conf.d/logstash.conf 
-	- ping-devops-es-siem/elasticsearch-siem/ping_siem_config_bootstrap/es_configurationloader.sh
 	- ping-devops-es-siem/.env 
 - This uses the default elastic user. This is bad practice and you should configure service users for logstash / kibana.
 - Configure your local docker client with at least 8GB Ram and 4CPU.

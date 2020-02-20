@@ -1,74 +1,74 @@
-"UNDEFINED" : -1
-"Success" : 0
-"Operations Error" : 1
-"Protocol Error" : 2
-"Time Limit Exceeded" : 3
-"Size Limit Exceeded" : 4
-"Compare False" : 5
-"Compare True" : 6
-"Authentication Method Not Supported" : 7
-"Strong Authentication Required" : 8
-"Referral" : 10
-"Administrative Limit Exceeded" : 11
-"Unavailable Critical Extension" : 12
-"Confidentiality Required" : 13
-"SASL Bind in Progress" : 14
-"No Such Attribute" : 16
-"Undefined Attribute Type" : 17
-"Inappropriate Matching" : 18
-"Constraint Violation" : 19
-"Attribute or Value Exists" : 20
-"Invalid Attribute Syntax" : 21
-"No Such Entry" : 32
-"Alias Problem" : 33
-"Invalid DN Syntax" : 34
-"Alias Dereferencing Problem" : 36
-"Inappropriate Authentication" : 48
-"Invalid Credentials" : 49
-"Insufficient Access Rights" : 50
-"Busy" : 51
-"Unavailable" : 52
-"Unwilling to Perform" : 53
-"Loop Detected" : 54
-"Sort Control Missing" : 60
-"Offset Range Error" : 61
-"Naming Violation" : 64
-"Object Class Violation" : 65
-"Not Allowed on Non-Leaf" : 66
-"Not Allowed on RDN" : 67
-"Entry Already Exists" : 68
-"Object Class Modifications Prohibited" : 69
-"Affects Multiple DSAs" : 71
-"Virtual List View Error" : 76
-"Other" : 80
-"Server Connection Closed" : 81
-"Local Error" : 82
-"Encoding Error" : 83
-"Decoding Error" : 84
-"Client-Side Timeout" : 85
-"Unknown Authentication Mechanism" : 86
-"Filter Error" : 87
-"Cancelled by User" : 88
-"Parameter Error" : 89
-"Out of Memory" : 90
-"Connect Error" : 91
-"Operation Not Supported" : 92
-"Control Not Found" : 93
-"No Results Returned" : 94
-"More Results to Return" : 95
-"Referral Loop Detected" : 96
-"Referral Hop Limit Exceeded" : 97
-"Canceled" : 118
-"No Such Operation" : 119
-"Too Late" : 120
-"Cannot Cancel" : 121
-"Assertion Failed" : 122
-"Authorization Denied" : 123
-"No Operation" : 16654
-"Interactive Transaction Aborted" : 30221001
-"Database Lock Conflict" : 30221002
-"Mirrored subtree digest mismatch" : 30221003
-"Token delivery mechanism unavailable" : 30221004
-"Token delivery attempt failed" : 30221005
-"Token delivery invalid recipient ID" : 30221006
-"Token delivery invalid account state" : 30221007
+"UNDEFINED": "-1"
+"Success": "0"
+"Operations Error": "1"
+"Protocol Error": "2"
+"Time Limit Exceeded": "3"
+"Size Limit Exceeded": "4"
+"Compare False": "5"
+"Compare True": "6"
+"Authentication Method Not Supported": "7"
+"Strong Authentication Required": "8"
+"Referral": "10"
+"Administrative Limit Exceeded": "11"
+"Unavailable Critical Extension": "12"
+"Confidentiality Required": "13"
+"SASL Bind in Progress": "14"
+"No Such Attribute": "16"
+"Undefined Attribute Type": "17"
+"Inappropriate Matching": "18"
+"Constraint Violation": "19"
+"Attribute or Value Exists": "20"
+"Invalid Attribute Syntax": "21"
+"No Such Entry": "32"
+"Alias Problem": "33"
+"Invalid DN Syntax": "34"
+"Alias Dereferencing Problem": "36"
+"Inappropriate Authentication": "48"
+"Invalid Credentials": "49"
+"Insufficient Access Rights": "50"
+"Busy": "51"
+"Unavailable": "52"
+"Unwilling to Perform": "53"
+"Loop Detected": "54"
+"Sort Control Missing": "60"
+"Offset Range Error": "61"
+"Naming Violation": "64"
+"Object Class Violation": "65"
+"Not Allowed on Non-Leaf": "66"
+"Not Allowed on RDN": "67"
+"Entry Already Exists": "68"
+"Object Class Modifications Prohibited": "69"
+"Affects Multiple DSAs": "71"
+"Virtual List View Error": "76"
+"Other": "80"
+"Server Connection Closed": "81"
+"Local Error": "82"
+"Encoding Error": "83"
+"Decoding Error": "84"
+"Client-Side Timeout": "85"
+"Unknown Authentication Mechanism": "86"
+"Filter Error": "87"
+"Cancelled by User": "88"
+"Parameter Error": "89"
+"Out of Memory": "90"
+"Connect Error": "91"
+"Operation Not Supported": "92"
+"Control Not Found": "93"
+"No Results Returned": "94"
+"More Results to Return": "95"
+"Referral Loop Detected": "96"
+"Referral Hop Limit Exceeded": "97"
+"Canceled": "118"
+"No Such Operation": "119"
+"Too Late": "120"
+"Cannot Cancel": "121"
+"Assertion Failed": "122"
+"Authorization Denied": "123"
+"No Operation": "16654"
+"Interactive Transaction Aborted": "30221001"
+"Database Lock Conflict": "30221002"
+"Mirrored subtree digest mismatch": "30221003"
+"Token delivery mechanism unavailable": "30221004"
+"Token delivery attempt failed": "30221005"
+"Token delivery invalid recipient ID": "30221006"
+"Token delivery invalid account state": "30221007"

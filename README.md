@@ -1,26 +1,30 @@
 # Ping Stack with ElasticSearch SIEM
-#### Built by Ryan Ivis with Ping Identity
+#### Built by Ryan Ivis with Ping Identity   
+#### Project Salt Water
 
 The goal of this project is to have pre-built security dashboards to ride along side our products. The inital phase is currently working on PingFederate Audit Logs. 
 
 
 ## Status
-| Phase    | Ping Product                             |  Status     | Dashboard Status |
-|----------|------------------------------------------|-------------|------------------|
-| Phase 1  | Ping Federate Audit Logs                 | Complete    | Beta             |
-| Phase 2  | LDAP Integrate ElasticSearch / Kibana    | Researching | N/A              |
-| Phase 3  | Ping Directory Logs                      | Complete    | In Progress      |
-| Phase 4  | Ping Access Logs                         | Future      | Future           |
+| Phase    | Ping Product                                |  Status     |
+|----------|---------------------------------------------|-------------|
+| Phase 1  | Ping Federate Audit Logs                    | Complete    |
+| Phase 2  | LDAP Integrate ElasticSearch / Kibana       | Researching |
+| Phase 2a | Ping SIEM Dashboard                         | Beta        |
+| Phase 2b | Ping Directory Load Generator (thanks arno) | Researching |
+| Phase 2c | Index Mapping rework for PD data index.     | Future      | 
+| Phase 3  | Ping Directory Logs                         | Complete    | 
+| Phase 4  | Ping Access Logs                            | Future      | 
 
 ## Important Note
 - **THIS IS NOT INTENDED FOR PRODUCTION. THERE ARE DEFAULT PASSWORDS THAT MUST BE MODIFIED**...   
-- **IF YOU MODIFY THE ELASTICSEARCH PASSWORD, YOU NEED TO UPDATE IT IN A FEW LOCATIONS** - will fix later...       
+     
 - **THERE ARE PERSISTANT DISKS USED FOR ES, AND ES CERTS TO CLEAR THEM WHEN YOU ARE DONE PLAYING**...   
 	- `docker volume prune`  
 
 ## Dashboard Examples
 ------------
-Demo Ping Fed Dashboard
+Demo Ping SIEM Dashboard
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/dashboard.png "PingFed Demo Dashboard")
 
  
@@ -54,10 +58,11 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 
 
 ## Kibana Access
-- ** WAIT UNTIL PING FED IS FULLY STARTED OR DASHBOARDS WILL NOT BE LOADED YET **
-- Kibana listens on https://{IP}:5601
-- UN is configured as "elastic"
-- PASSWORD is configured as "2FederateM0re" 
+- **WAIT UNTIL PING FED IS FULLY STARTED OR DASHBOARDS WILL NOT BE LOADED YET**
+- Kibana listens on https://{IP}:5601  
+
+- UN is configured as "elastic"  
+- PASSWORD is configured as "2FederateM0re"  
 
 
 ## Important Notes <--READ

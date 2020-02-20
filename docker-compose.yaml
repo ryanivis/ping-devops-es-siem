@@ -48,9 +48,10 @@ services:
 
   searchrate:
     image: pingidentity/ldap-sdk-tools
-    command: wait-for pingdirectory:389 -- searchrate -h pingdirectory -p 389 -D cn=administrator -w 2FederateM0re -b dc=example,dc=com "(uid=user.[0-4])" -r 5
+    command: wait-for pingdirectory:389 -t 900 -- searchrate -h pingdirectory -p 389 -D cn=administrator -w 2FederateM0re -b dc=example,dc=com -f "(uid=user.[0-4])" -r 5
     networks:
       - pingnet
+      
 
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:$ELASTIC_VERSION

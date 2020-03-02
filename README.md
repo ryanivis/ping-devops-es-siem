@@ -22,6 +22,9 @@ The goal of this project is to have pre-built security dashboards to ride along 
 - **THERE ARE PERSISTANT DISKS USED FOR ES, AND ES CERTS TO CLEAR THEM WHEN YOU ARE DONE PLAYING**...   
 	- `docker volume prune`  
 
+- **YOU MUST RUN THE FOLLOWING COMMAND ON UBUNTU (LIKELY OTHER DISTRO'S) FOR HEAP SIZES**
+	- `sudo sysctl -w vm.max_map_count=262144`
+	
 ## Dashboard Examples
 ------------
 Demo Ping SIEM Dashboard

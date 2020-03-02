@@ -9,6 +9,8 @@ The goal of this project is to have pre-built security dashboards to ride along 
 | Phase    | Ping Product                                |  Status     |
 |----------|---------------------------------------------|-------------|
 | Phase 1  | Ping Federate Audit Logs                    | Complete    |
+| Phase 1a | Ping Federate Provisioner Logs              | In Progress |
+| Phase 1b | Ping Federate System Logs                   | In Progress |
 | Phase 2  | LDAP Integrate ElasticSearch / Kibana       | In Progress |
 | Phase 2a | Ping SIEM Dashboard                         | Beta        |
 | Phase 2b | Ping Directory Load Generator (thanks arno) | Implemented |

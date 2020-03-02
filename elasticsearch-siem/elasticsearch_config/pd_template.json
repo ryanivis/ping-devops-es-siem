@@ -4,8 +4,7 @@
     "pd-access*"
   ],
   "mappings": {
-    "_doc": {
-      "properties": {
+    "properties": {
         "@timestamp": {
           "type": "date"
         },

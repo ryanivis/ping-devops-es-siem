@@ -9,10 +9,10 @@ The goal of this project is to have pre-built security dashboards to ride along 
 | Phase    | Ping Product                                |  Status     |
 |----------|---------------------------------------------|-------------|
 | Phase 1  | Ping Federate Audit Logs                    | Complete    |
-| Phase 2  | LDAP Integrate ElasticSearch / Kibana       | Researching |
+| Phase 2  | LDAP Integrate ElasticSearch / Kibana       | In Progress |
 | Phase 2a | Ping SIEM Dashboard                         | Beta        |
-| Phase 2b | Ping Directory Load Generator (thanks arno) | Researching |
-| Phase 2c | Index Mapping rework for PD data index.     | Future      | 
+| Phase 2b | Ping Directory Load Generator (thanks arno) | Implemented |
+| Phase 2c | Index Mapping rework for PD data index.     | Complete    | 
 | Phase 3  | Ping Directory Logs                         | Complete    | 
 | Phase 4  | Ping Access Logs                            | Future      | 
 

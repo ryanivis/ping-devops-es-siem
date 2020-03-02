@@ -1176,11 +1176,11 @@
         <Socket name="OutboundSystemLogsToSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                    <pattern>%d %X{trackingid} %-5p [%c] %m%n</pattern>
+                    <pattern>date=%d trackingid=%X{trackingid} loglevel=%-5p messagedetail=[%c] messageinfo=%m%n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
-        
+
     </Appenders>
 
     <Loggers>
@@ -1508,6 +1508,8 @@
             <AppenderRef ref="FILE" />
             -->
             <AppenderRef ref="OutboundSystemLogsToSyslog" />
+            <AppenderRef ref="FILE" />
+            <AppenderRef ref="CONSOLE" />
         </AsyncRoot>
 
 

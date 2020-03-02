@@ -57,7 +57,13 @@
         }
       },
       "host": {
-        "type": "ip"
+        "type": "ip",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
       },
       "host_name": {
         "type": "text",
@@ -69,7 +75,13 @@
         }
       },
       "ip": {
-        "type": "ip"
+        "type": "ip",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
       },
       "log_type": {
         "type": "text",

@@ -258,7 +258,13 @@
           }
         },
         "requesterIP": {
-          "type": "ip"
+          "type": "ip",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
         },
         "resultCode": {
           "type": "text",

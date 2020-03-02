@@ -1176,7 +1176,9 @@
         <Socket name="OutboundSystemLogsToSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                    <pattern>date=%d trackingid=%X{trackingid} loglevel=%-5p messagedetail=[%c] messageinfo=%m%n</pattern>
+                    <134>Mar  2 21:04:53  0dcf0361e3a3 date=2020-03-02 21:04:53,711 trackingid= loglevel=INFO  messagedetail=[com.pingidentity.crypto.CertificateServiceImpl] messageinfo=Loaded 150 trust anchors from /etc/ssl/certs/java/cacerts
+
+                    <pattern>date="%d" trackingid="%X{trackingid}" loglevel="%-5p" messagesource="[%c]" messagedetail="%m%n"</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

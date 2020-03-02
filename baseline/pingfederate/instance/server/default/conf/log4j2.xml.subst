@@ -1178,7 +1178,7 @@
                 <PatternLayout>
                     <134>Mar  2 21:04:53  0dcf0361e3a3 date=2020-03-02 21:04:53,711 trackingid= loglevel=INFO  messagedetail=[com.pingidentity.crypto.CertificateServiceImpl] messageinfo=Loaded 150 trust anchors from /etc/ssl/certs/java/cacerts
 
-                    <pattern>date="%d" trackingid="%X{trackingid}" loglevel="%-5p" messagesource="[%c]" messagedetail="%m%n"</pattern>
+                    <pattern>date=&quot;%d&quot; trackingid=&quot;%X{trackingid}&quot; loglevel=&quot;%-5p&quot; messagesource=&quot;[%c]&quot; messagedetail=&quot;%m%n&quot;</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

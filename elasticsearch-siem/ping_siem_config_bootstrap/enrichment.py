@@ -39,3 +39,5 @@ enrichmentFilePath_AV = "/usr/share/elasticsearch/enrichment/AlienVaultIP.yml"
 
 writeYAML_TOR(torFeedURL, enrichmentFilePath_TOR)
 writeYAML_AV(alienvaultFeedURL, enrichmentFilePath_AV)
+
+print("Enrichment pull complete.")

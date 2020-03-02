@@ -14,6 +14,7 @@ services:
       - SYSLOG_HOST=logstash
       - SYSLOG_PORT_AUDIT=20514
       - SYSLOG_PORT_PROVISIONER=20515
+      - SYSLOG_PORT_SYSTEM=20517
       - SYSLOG_PROTOCOL=TCP
     ports:
       - 9031:9031
@@ -61,7 +62,7 @@ services:
       - pingnet
 #END TEST AUTHENTICATORS
 
-
+#ES Server 1
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:$ELASTIC_VERSION
     container_name: es01
@@ -98,7 +99,7 @@ services:
     networks:
       - pingnet
 
-
+#ES Server 2
   es02:
     image: docker.elastic.co/elasticsearch/elasticsearch:$ELASTIC_VERSION
     container_name: es02
@@ -135,7 +136,7 @@ services:
     networks:
     - pingnet
 
-
+#Generate Certificates if not already on disk, then run the saved state loader to push saved templates and objects into both kibana and elasticsearch
   configure_es_certs_state:
     container_name: configure_es_certs_state
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
@@ -162,7 +163,7 @@ services:
     networks:
       - pingnet
 
-
+#Service that runs and updates both Known TOR and Known Malicious IPs for log enrichment.
   enrichment_service:
     container_name: enrichment_service
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
@@ -185,7 +186,7 @@ services:
       - es01
       - es02
 
-
+#Logstash system is how log4j ships logs into the stack.
   logstash:
     image: docker.elastic.co/logstash/logstash:$ELASTIC_VERSION
     ports:
@@ -193,6 +194,7 @@ services:
       - "20514:20514"
       - "20515:20515"
       - "20516:20516"
+      - "20517:20517"
     command: logstash -f /etc/logstash/conf.d/logstash.conf
     volumes:
       - ./elasticsearch-siem/logstash/conf.d:/etc/logstash/conf.d/logstash.conf
@@ -215,7 +217,7 @@ services:
     networks:
       - pingnet
 
-
+#Kibana System for visuilizations etc.
   kibana:
     image: docker.elastic.co/kibana/kibana:$ELASTIC_VERSION
     container_name: kibana
@@ -239,11 +241,11 @@ services:
     networks:
       - pingnet
 
-
+#private operating network
 networks:
   pingnet:
 
-
+#Persistant volumes for ES01 / ES02 (DATA) and the Certificates
 volumes:
   data01:
     driver: local

@@ -850,6 +850,16 @@
         </PingFailover>
         
 
+        <Socket name="OutboundSystemLogsToSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
+            <PingSyslogLayout>
+                <PatternLayout>
+                    <pattern>%d %X{trackingid} %-5p [%c] %m%n</pattern>
+                </PatternLayout>
+            </PingSyslogLayout>
+        </Socket>
+
+
+
         <!-- Outbound provisioner audit log for CEFFile: A time/date based rolling appender
 
         NOTES:
@@ -1493,10 +1503,15 @@
 
             For database logging, comment the <AsyncRoot> block and uncomment the <Root> block.
         -->
+
+
         <AsyncRoot level="INFO" includeLocation="false">
-            <!-- <AppenderRef ref="CONSOLE" /> -->
+            <!--
             <AppenderRef ref="FILE" />
+            -->
+            <AppenderRef ref="OutboundSystemLogsToSyslog" />
         </AsyncRoot>
+
 
         <!--
             The database connection pooling settings can be tuned in log4j2.db.properties.
@@ -1504,12 +1519,14 @@
             This Root logger will log to the configured database. The bufferSize defined in the appender
             will determine how often events are flushed to the database.
         -->
+
         <!--
         <Root level="INFO" includeLocation="false">
             <AppenderRef ref="ServerLogToOracleDB-FAILOVER" />
             <AppenderRef ref="ServerLogToSQLServerDB-FAILOVER" />
             <AppenderRef ref="ServerLogToMySQLDB-FAILOVER" />
             <AppenderRef ref="ServerLogToPostgreSQLDB-FAILOVER" />
+            <AppenderRef ref="OutboundSystemLogsToSyslog" />
         </Root>
         -->
 

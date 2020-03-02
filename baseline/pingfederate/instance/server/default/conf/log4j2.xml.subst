@@ -850,15 +850,6 @@
         </PingFailover>
         
 
-        <Socket name="OutboundSystemLogsToSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
-            <PingSyslogLayout>
-                <PatternLayout>
-                    <pattern>%d %X{trackingid} %-5p [%c] %m%n</pattern>
-                </PatternLayout>
-            </PingSyslogLayout>
-        </Socket>
-
-
 
         <!-- Outbound provisioner audit log for CEFFile: A time/date based rolling appender
 
@@ -1182,7 +1173,14 @@
         <JMS name="JMS" factoryBindingName="java:/ConnectionFactory"
          destinationBindingName="topic/MyErrorsTopic"/>
         -->
-
+        <Socket name="OutboundSystemLogsToSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
+            <PingSyslogLayout>
+                <PatternLayout>
+                    <pattern>%d %X{trackingid} %-5p [%c] %m%n</pattern>
+                </PatternLayout>
+            </PingSyslogLayout>
+        </Socket>
+        
     </Appenders>
 
     <Loggers>

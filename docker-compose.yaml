@@ -171,7 +171,7 @@ services:
       - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
       - THREAT_INTEL_PULL_INTERVAL=600
     command: > 
-     bash -c '
+      bash -c '
         sh /usr/share/elasticsearch/config/bootstrap/dep_install.sh
         sh /usr/share/elasticsearch/config/bootstrap/enrichment_wrapper.sh
       '

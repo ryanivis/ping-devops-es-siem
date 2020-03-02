@@ -3,8 +3,6 @@
 # Author: Ryan Ivis -- Ping Identity
 # Pull Down Tor Nodes / AlienVault Feeds and convert to YAML for Logstash Enrichment
 # This simple py Script downloads enrichment files and converts them to a Logstash format for enriching logs.
-#
-#
 
 import urllib2, re
 import requests

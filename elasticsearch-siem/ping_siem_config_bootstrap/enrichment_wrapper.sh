@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+# Author: Ryan Ivis -- Ping Identity
 # !!!! ENDLESS LOOP
 # THIS WILL PULL THREAT INTEL EVERY X SECONDS AND PLACE IN THE ENRICHMENT CACHE FOLDER
 #

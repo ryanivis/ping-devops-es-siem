@@ -17,7 +17,7 @@ The goal of this project is to have pre-built security dashboards to ride along 
 | Phase 2c | Index Mapping rework for PD data index.     | Complete    | 
 | Phase 2d | Integrate 2 Day Retention with Curator      | In Progress |
 | Phase 3  | Ping Directory Logs                         | Complete    | 
-| Phase 4  | Ping Access Logs                            | In Progress | 
+| Phase 4  | Ping Access Logs                            | Complete    | 
 
 ## Important Note
 - **THIS IS NOT INTENDED FOR PRODUCTION. THERE ARE DEFAULT PASSWORDS THAT MUST BE MODIFIED**...   

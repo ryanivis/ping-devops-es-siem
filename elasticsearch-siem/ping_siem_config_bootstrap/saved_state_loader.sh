@@ -17,6 +17,7 @@ echo $health
 echo "Loading! -- ElasticSearch Index Templates"
 curl -X PUT "https://es01:9200/_template/pf_audit?pretty" --insecure -u elastic:$ELASTIC_PASSWORD -H 'Content-Type: application/json' -d"@/usr/share/elasticsearch/config/es_config/pf_template.json"
 curl -X PUT "https://es01:9200/_template/pd_access?pretty" --insecure -u elastic:$ELASTIC_PASSWORD -H 'Content-Type: application/json' -d"@/usr/share/elasticsearch/config/es_config/pd_template.json"
+curl -X PUT "https://es01:9200/_template/pa_audit?pretty" --insecure -u elastic:$ELASTIC_PASSWORD -H 'Content-Type: application/json' -d"@/usr/share/elasticsearch/config/es_config/pa_template.json"
 
 
 #Wait for Kibana API to go Green before importing saved objects

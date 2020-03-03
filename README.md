@@ -15,6 +15,7 @@ The goal of this project is to have pre-built security dashboards to ride along 
 | Phase 2a | Ping SIEM Dashboard                         | Beta        |
 | Phase 2b | Ping Directory Load Generator (thanks arno) | Complete    |
 | Phase 2c | Index Mapping rework for PD data index.     | Complete    | 
+| Phase 2d | Integrate 2 Day Retention with Curator      | In Progress |
 | Phase 3  | Ping Directory Logs                         | Complete    | 
 | Phase 4  | Ping Access Logs                            | Future      | 
 

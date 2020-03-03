@@ -321,7 +321,7 @@
         <Socket name="SecurityAuditToCEFSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_AUDIT}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                    <pattern>%d trackingid=&quot;%X{trackingid}&quot; event=%X{event} subject=&quot;%X{subject}&quot; ip=%X{ip} app=%X{app} connectionid=%X{connectionid} protocol=&quot;%X{protocol}&quot; pfhost=%X{host} role=%X{role} status=%X{status} adapterid=%X{adapterid} description=&quot;%X{description}&quot; responsetime=%X{responsetime} inmessagetype=&quot;%X{inmessagetype}&quot; %n</pattern>
+                    <pattern>%d trackingid=&quot;%X{trackingid}&quot; event=%X{event} subject=&quot;%X{subject}&quot; ip=&quot;%X{ip}&quot; app=&quot;%X{app}&quot; connectionid=&quot;%X{connectionid}&quot; protocol=&quot;%X{protocol}&quot; pfhost=&quot;%X{host}&quot; role=&quot;%X{role}&quot; status=&quot;%X{status}&quot; adapterid=&quot;%X{adapterid}&quot; description=&quot;%X{description}&quot; responsetime=&quot;%X{responsetime}&quot; inmessagetype=&quot;%X{inmessagetype}&quot; %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

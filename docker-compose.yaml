@@ -24,6 +24,24 @@ services:
     depends_on:
       - pingdirectory
  
+  pingaccess:
+    image: pingidentity/pingaccess:edge
+    command: wait-for pingdirectory:389 -t 800 -- entrypoint.sh start-server
+    environment:
+      - SERVER_PROFILE_URL=https://github.com/ryanivis/ping-devops-es-siem.git
+      - SERVER_PROFILE_PATH=baseline/pingaccess
+      - PING_IDENTITY_ACCEPT_EULA=YES
+      - PING_IDENTITY_DEVOPS_USER=$PING_IDENTITY_DEVOPS_USER
+      - PING_IDENTITY_DEVOPS_KEY=$PING_IDENTITY_DEVOPS_KEY
+      - SYSLOG_HOST=logstash 
+      - SYSLOG_PORT=20518
+    ports:
+      - 9000:9000
+      - 3000:3000
+    networks:
+      - pingnet
+    depends_on:
+      - pingdirectory
 
   pingdirectory:
     image: pingidentity/pingdirectory:latest
@@ -195,6 +213,7 @@ services:
       - "20515:20515"
       - "20516:20516"
       - "20517:20517"
+      - "20518:20518"
     command: logstash -f /etc/logstash/conf.d/logstash.conf
     volumes:
       - ./elasticsearch-siem/logstash/conf.d:/etc/logstash/conf.d/logstash.conf

@@ -665,15 +665,15 @@
         <!-- ================================================= -->
         <!-- To use, uncomment the appenderRef under "com.pingidentity" Logger -->
 
-        <!-- Syslog events - Custom pattern
-        <Socket name="SYSLOG" host="localhost" port="514" protocol="UDP">
+
+        <Socket name="SYSLOG" host="${SYSLOG_HOST}" port="${SYSLOG_PORT}" protocol="UDP">
             <PingSyslogLayout facility="LOCAL0">
                 <PatternLayout>
-                    <pattern>%d{ABSOLUTE} %5p %c:%L - %m%n</pattern>
+                    <pattern>date=&quot;%d{ABSOLUTE}&quot; v1=&quot;%5p&quot; v2=&quot;%c:%L&quot; message=&quot;%m&quot; %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
-        -->
+
     </Appenders>
 
     <Loggers>
@@ -681,7 +681,7 @@
         <AsyncLogger name="com.pingidentity" level="${PA_LOG_LEVEL}" additivity="false" includeLocation="false">
             <AppenderRef ref="File"/>
             <!--<AppenderRef ref="CONSOLE" />-->
-            <!--<AppenderRef ref="SYSLOG" />-->
+            <AppenderRef ref="SYSLOG" />
         </AsyncLogger>
 
         <!-- Logs details/ordering of service proxies -->

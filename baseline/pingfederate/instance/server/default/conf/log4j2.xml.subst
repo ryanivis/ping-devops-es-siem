@@ -292,8 +292,6 @@
             </Policies>
         </RollingFile>
 
-       
-        
         <Socket name="OutboundProvisionerEventToCEFSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_PROVISIONER}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
@@ -316,8 +314,6 @@
             </Failovers>
         </PingFailover>
         
-
-        
         <Socket name="SecurityAuditToCEFSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_AUDIT}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
@@ -325,7 +321,7 @@
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
-        
+
         <RollingFile name="SecurityAuditToCEFSyslog-FILE" fileName="${sys:pf.log.dir}/audit-cef-syslog-failover.log"
             filePattern="${sys:pf.log.dir}/audit-cef-syslog-failover.%d{yyyy-MM-dd}.log" >
             <PatternLayout>
@@ -344,7 +340,7 @@
         <Socket name="OutboundSystemLogsToSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                    <pattern>date=&quot;%d{MMM dd yyyy HH:mm:ss.SSS}&quot; trackingid=&quot;%X{trackingid}&quot; loglevel=&quot;%-5p&quot; messagesource=&quot;[%c]&quot; messagedetail=&quot;%m&quot;</pattern>
+                    <pattern>date=&quot;%d{MMM dd yyyy HH:mm:ss.SSS}&quot; trackingid=&quot;%X{trackingid}&quot; loglevel=&quot;%-5p&quot; messagesource=&quot;[%c]&quot; messagedetail=&quot;%m&quot; %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

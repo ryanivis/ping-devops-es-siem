@@ -666,10 +666,18 @@
         <!-- To use, uncomment the appenderRef under "com.pingidentity" Logger -->
 
 
-        <Socket name="SYSLOG" host="${SYSLOG_HOST}" port="${SYSLOG_PORT}" protocol="UDP">
+        <Socket name="SYSLOG" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="UDP">
             <PingSyslogLayout facility="LOCAL0">
                 <PatternLayout>
                     <pattern>date=&quot;%d{ABSOLUTE}&quot; v1=&quot;%5p&quot; v2=&quot;%c:%L&quot; message=&quot;%m&quot; %n</pattern>
+                </PatternLayout>
+            </PingSyslogLayout>
+        </Socket>
+
+        <Socket name="SYSLOG_AUDIT" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_AUDIT}" protocol="UDP">
+            <PingSyslogLayout facility="LOCAL0">
+                <PatternLayout>
+                    <pattern>date=&quot;%d{ISO8601}&quot; exchangeId=&quot;%X{exchangeId}&quot; trackingId=&quot;%X{AUDIT.trackingId}&quot; roundTripMS=&quot;%X{AUDIT.roundTripMS}&quot; subject=&quot;%X{AUDIT.subject}&quot; authMech=&quot;%X{AUDIT.authMech}&quot; client=&quot;%X{AUDIT.client}&quot; method=&quot;%X{AUDIT.method}&quot; requestUri=&quot;%X{AUDIT.requestUri}&quot; responseCode=&quot;%X{AUDIT.responseCode}&quot; %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
@@ -700,6 +708,7 @@
         <!-- Audit Log Configuration-->
         <Logger name="apiaudit" level="INFO" additivity="false">
             <AppenderRef ref="APIAuditLog-File"/>
+            <AppenderRef ref="SYSLOG_AUDIT"/>
             <!--<AppenderRef ref="ApiAuditLog-Database-Failover"/>-->
             <!--<AppenderRef ref="ApiAuditLog-SQLServer-Database-Failover"/>-->
             <!--<AppenderRef ref="ApiAuditLog-PostgreSQL"/>-->
@@ -707,6 +716,7 @@
         </Logger>
         <Logger name="engineaudit" level="INFO" additivity="false">
             <AppenderRef ref="EngineAuditLog-File"/>
+            <AppenderRef ref="SYSLOG_AUDIT"/>
             <!--<AppenderRef ref="EngineAuditLog-Database-Failover"/>-->
             <!--<AppenderRef ref="EngineAuditLog-SQLServer-Database-Failover"/>-->
             <!--<AppenderRef ref="EngineAuditLog-PostgreSQL"/>-->
@@ -714,6 +724,7 @@
         </Logger>
         <Logger name="agentaudit" level="INFO" additivity="false">
             <AppenderRef ref="AgentAuditLog-File"/>
+            <AppenderRef ref="SYSLOG_AUDIT"/>
             <!--<AppenderRef ref="AgentAuditLog-Database-Failover"/>-->
             <!--<AppenderRef ref="AgentAuditLog-SQLServer-Database-Failover"/>-->
             <!--<AppenderRef ref="AgentAuditLog-PostgreSQL"/>-->
@@ -776,6 +787,7 @@
         <!-- Root Logger-->
         <AsyncRoot level="INFO" includeLocation="false">
             <AppenderRef ref="File"/>
+            <AppenderRef ref="SYSLOG" />
         </AsyncRoot>
     </Loggers>
 </Configuration>

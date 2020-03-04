@@ -27,7 +27,27 @@ The goal of this project is to have pre-built security dashboards to ride along 
 
 - **YOU MUST RUN THE FOLLOWING COMMAND ON UBUNTU (LIKELY OTHER DISTRO'S) FOR HEAP SIZES**
 	- `sudo sysctl -w vm.max_map_count=262144`
-	
+
+# Directions
+
+- Clone this project to your local disk.  
+- Create and place a file `.env` in root path of the clone and place these lines in it (update your devops details).      
+
+```
+COMPOSE_PROJECT_NAME=es   
+ELASTIC_VERSION=7.6.0   
+ELASTIC_SECURITY=true    
+ELASTIC_PASSWORD=2FederateM0re   
+CERTS_DIR=/usr/share/elasticsearch/config/certificates     
+PING_IDENTITY_DEVOPS_USER={YOUR DEVOPS USER NAME HERE}    
+PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}   
+```
+
+- Configure Docker to have 8-16GB RAM and 4CPU  
+	- Start the stack with `docker-compose up -d`  
+	- Monitor the stack with `docker-compose logs --follow`  
+------------
+
 ## Dashboard Examples
 ------------
 ### Demo Ping SIEM Dashboard (Beta 4) - More security use cases are coming soon.
@@ -47,26 +67,6 @@ The goal of this project is to have pre-built security dashboards to ride along 
 - Threat Feeds are updated on an interval via seting a var in docker-compose !!!
 
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/Architecture.png "Architecture Overview")
-------------
-
-# Directions
-
-- Clone this project to your local disk.  
-- Create and place a file `.env` in root path of the clone and place these lines in it (update your devops details).      
-------------
-```
-COMPOSE_PROJECT_NAME=es   
-ELASTIC_VERSION=7.6.0   
-ELASTIC_SECURITY=true    
-ELASTIC_PASSWORD=2FederateM0re   
-CERTS_DIR=/usr/share/elasticsearch/config/certificates     
-PING_IDENTITY_DEVOPS_USER={YOUR DEVOPS USER NAME HERE}    
-PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}   
-```
-------------
-- Configure Docker to have 8-16GB RAM and 4CPU  
-	- Start the stack with `docker-compose up -d`  
-	- Monitor the stack with `docker-compose logs --follow`  
 ------------
 
 ## PingDirectory

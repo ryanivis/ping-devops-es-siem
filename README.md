@@ -51,7 +51,7 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}    <====== NOTICE THIS
 
 ------------
 ## Dashboard Examples
-------------
+
 ### Demo Ping SIEM Dashboard (Beta 4) - More security use cases are coming soon.
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/dashboard.png "SIEM Dashboard")
 

@@ -89,9 +89,9 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}    <====== NOTICE THIS
 ## Kibana Access
 - Kibana listens on https://{IP}:5601  
 
-DEFAULT PASSWORDS  
-- UN is configured as "elastic"  
-- PASSWORD is configured as "2FederateM0re"  
+- DEFAULT PASSWORDS  
+    - UN is configured as "elastic"  
+    - PASSWORD is configured as "2FederateM0re"  
 
 
 ## Important Notes <--READ

@@ -1,4 +1,4 @@
-# Ping Stack with ElasticSearch SIEM
+# Ping Stack with ElasticSearch SIEM -- BETA version (.1)
 #### Built by Ryan Ivis with Ping Identity   
 #### Project Salt Water
 
@@ -91,26 +91,26 @@ DEFAULT PASSWORDS
 
 ## Important Notes <--READ
 - Allow 5-10 min for the stack to come up!
-- Do not access kibana until Ping Fed is loaded or you will find no dashboards / saved objects loaded.  
-- ** If updating the Elastic Password it must also be updated in the logstash pipeline configuration **
+- The stack spins up a few containers that send load to PingDirectory, below you will find directions to disable those.
+- **If updating the Elastic Password**
 	- ping-devops-es-siem/.env 
-- This uses the default elastic user. This is bad practice and you should configure service users for logstash / kibana.
-- Configure your local docker client with at least 8GB Ram and 4CPU.
+- This uses the default elastic user. This is **bad practice** and you should configure service users for logstash / kibana.
 - Server Side TLS Certificate Validation is not enabled on the demo it is set to 'none' in the ES configuration
 - TLS is used betweeen ES nodes, as well as between Logstash and Kibana.
+- Certs are all self signed.
 
 ------------
 ## Kibana Saved Objects
 - Saved Objects can be loaded by going to 'saved objects' under kibana settings and exporting all. Save the file in the...  
 	- ./elasticsearch-siem/kibana_config/kib_base.ndjson  
 
-- They will be reloaded upon Kibana Start!!! This enables you to save objects for dashboards and reload!
+- They will be reloaded when the stack is reloaded!!! This enables you to save objects for dashboards and reload!
 
 ------------
 ## ElasticSearch Template for PingFederate Audit Logs
 - Elasticsearch will load the PF-Audit Template such that logs will have the correct field types for searching ONLY working for the AUDIT logs if you use the Included LOG4J format within this PF baseline.
-- The Scripts will load this template once cluster state is green.
-	- ./elasticsearch-siem/elasticsearch_config/templates.json
+- The Scripts will load this template(s) once cluster state is green.
+	- ./elasticsearch-siem/elasticsearch_config/
 
 ------------
 ## Logstash Pipeline
@@ -125,6 +125,9 @@ DEFAULT PASSWORDS
 - Ping Fed ships logs on 2 different SYSLOG PORTS, with a CUSTOM mapping. This enables Logstash to use it's CSV filter to parse the logs quickly and map them. This isn't the fastest way to do this but for demo's it's more than sufficent.
 
 ------------
+
+
+
 ## Ping Dev-Ops Included Documentation
 
 

@@ -21,6 +21,9 @@
             "type": "half_float"
           }
         }
+      },
+      "roundTripMS": {
+        "type": "long"
       }
     }
   }

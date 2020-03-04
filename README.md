@@ -110,7 +110,7 @@ DEFAULT PASSWORDS
 ## ElasticSearch Template for PingFederate Audit Logs
 - Elasticsearch will load the PF-Audit Template such that logs will have the correct field types for searching ONLY working for the AUDIT logs if you use the Included LOG4J format within this PF baseline.
 - The Scripts will load this template(s) once cluster state is green.
-	- ./elasticsearch-siem/elasticsearch_config/
+	- ./elasticsearch-siem/elasticsearch_config/****
 
 ------------
 ## Logstash Pipeline
@@ -118,14 +118,22 @@ DEFAULT PASSWORDS
 - Threat Intel (Alien Vault Provided)
 - GEO IP Lookup
 - Data Parsing
-- Logstash Pipeline is stored in the folder structure. It includes Parsers for Audit and Provisioner.
+- Logstash Pipeline is stored in the folder structure. It includes Parsers for All Ping Log Sources.
 
 ------------
 ## PingFederate
-- Ping Fed ships logs on 2 different SYSLOG PORTS, with a CUSTOM mapping. This enables Logstash to use it's CSV filter to parse the logs quickly and map them. This isn't the fastest way to do this but for demo's it's more than sufficent.
-
+- Ping Fed ships logs on 2 different SYSLOG PORTS, with a CUSTOM mappings.
 ------------
 
+------------
+## PingDirectory
+- Ping Fed ships logs on 1 SYSLOG PORT, with a CUSTOM mapping.
+------------
+
+------------
+## PingAccess
+- Ping Fed ships logs on 2 different SYSLOG PORTS, with a CUSTOM mappings.
+------------
 
 
 ## Ping Dev-Ops Included Documentation

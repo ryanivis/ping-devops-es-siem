@@ -30,24 +30,26 @@ The goal of this project is to have pre-built security dashboards to ride along 
 
 # Directions
 
+- To setup on AWS use a M5.XL or M5a.XL (16GB RAM)
+- Tested on Ubuntu 18 Running Docker / Docker Compose
+    - Installed using these directions https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04
+    - Install Docker and Docker Compose(the above link can help or do your own research)
+    - `sudo sysctl -w vm.max_map_count=262144`
 - Clone this project to your local disk.  
-- Create and place a file `.env` in root path of the clone and place these lines in it (update your devops details).      
-
+- Create and place a file `.env` in root path of the clone and place these lines in it (update your devops details).
 ```
 COMPOSE_PROJECT_NAME=es   
 ELASTIC_VERSION=7.6.0   
 ELASTIC_SECURITY=true    
 ELASTIC_PASSWORD=2FederateM0re   
 CERTS_DIR=/usr/share/elasticsearch/config/certificates     
-PING_IDENTITY_DEVOPS_USER={YOUR DEVOPS USER NAME HERE}    
-PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}   
+PING_IDENTITY_DEVOPS_USER={YOUR DEVOPS USER NAME HERE}    <====== NOTICE THIS
+PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}    <====== NOTICE THIS
 ```
+- Start the stack with `docker-compose up -d`  
+- Monitor the stack with `docker-compose logs --follow`
 
-- Configure Docker to have 8-16GB RAM and 4CPU  
-	- Start the stack with `docker-compose up -d`  
-	- Monitor the stack with `docker-compose logs --follow`  
 ------------
-
 ## Dashboard Examples
 ------------
 ### Demo Ping SIEM Dashboard (Beta 4) - More security use cases are coming soon.

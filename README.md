@@ -8,16 +8,16 @@ The goal of this project is to have pre-built security dashboards to ride along 
 ## Status
 | Phase    | Ping Product                                |  Status     |
 |----------|---------------------------------------------|-------------|
-| Phase 1  | Ping Federate Audit Logs                    | Complete    |
-| Phase 1a | Ping Federate Provisioner Logs              | Complete    |
-| Phase 1b | Ping Federate System Logs                   | Complete    |
+| Phase 1  | PingFederate Audit Logs                     | Complete    |
+| Phase 1a | PingFederate Provisioner Logs               | Complete    |
+| Phase 1b | PingFederate System Logs                    | Complete    |
 | Phase 2  | LDAP Integrate ElasticSearch / Kibana       | In Progress |
 | Phase 2a | Ping SIEM Dashboard                         | Beta        |
-| Phase 2b | Ping Directory Load Generator (thanks arno) | Complete    |
+| Phase 2b | PingDirectory Load Generator (thanks arno)  | Complete    |
 | Phase 2c | Index Mapping rework for PD data index.     | Complete    | 
 | Phase 2d | Integrate 2 Day Retention with Curator      | In Progress |
-| Phase 3  | Ping Directory Logs                         | Complete    | 
-| Phase 4  | Ping Access Logs                            | Complete    | 
+| Phase 3  | PingDirectory Logs                          | Complete    | 
+| Phase 4  | PingAccess Logs                             | Complete    | 
 
 ## Important Note
 - **THIS IS NOT INTENDED FOR PRODUCTION. THERE ARE DEFAULT PASSWORDS THAT MUST BE MODIFIED**...   
@@ -46,11 +46,10 @@ Demo Directory Demo Dashboard
 - Threat Intel and TOR Endpoints are being provided by AlienVault and the TOR Network Endpoint List.  
 - Threat Feeds are updated on an interval via seting a var in docker-compose !!!
 
-
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/Architecture.png "Architecture Overview")
 ------------
 
-## Directions
+# Directions
 
 - Clone this project to your local disk.  
 - Create and place a file `.env` in root path of the clone and place these lines in it (update your devops details).      
@@ -65,17 +64,27 @@ PING_IDENTITY_DEVOPS_USER={YOUR DEVOPS USER NAME HERE}
 PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}   
 ```
 ------------
-- Configure Docker to have 8GB RAM and 4CPU  
+- Configure Docker to have 8-16GB RAM and 4CPU  
 	- Start the stack with `docker-compose up -d`  
 	- Monitor the stack with `docker-compose logs --follow`  
-
 ------------
 
+## PingDirectory
+- Audit Logs are being delivered
+- There are 2 containers that produce load, you can STOP these containers to save on CPU
+    - authrate_ok
+    - authrate_ko
+
+## PingFederate
+- Audit and System logs are delivered.
+
+## PingAccess
+ - Audit Logs are being delivered
 
 ## Kibana Access
-- **WAIT UNTIL PING FED IS FULLY STARTED OR DASHBOARDS WILL NOT BE LOADED YET**
 - Kibana listens on https://{IP}:5601  
 
+DEFAULT PASSWORDS  
 - UN is configured as "elastic"  
 - PASSWORD is configured as "2FederateM0re"  
 
@@ -98,7 +107,7 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 - They will be reloaded upon Kibana Start!!! This enables you to save objects for dashboards and reload!
 
 ------------
-## ElasticSearch Template for PF Audit Logs
+## ElasticSearch Template for PingFederate Audit Logs
 - Elasticsearch will load the PF-Audit Template such that logs will have the correct field types for searching ONLY working for the AUDIT logs if you use the Included LOG4J format within this PF baseline.
 - The Scripts will load this template once cluster state is green.
 	- ./elasticsearch-siem/elasticsearch_config/templates.json
@@ -112,7 +121,7 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}
 - Logstash Pipeline is stored in the folder structure. It includes Parsers for Audit and Provisioner.
 
 ------------
-## Ping Federate
+## PingFederate
 - Ping Fed ships logs on 2 different SYSLOG PORTS, with a CUSTOM mapping. This enables Logstash to use it's CSV filter to parse the logs quickly and map them. This isn't the fastest way to do this but for demo's it's more than sufficent.
 
 ------------

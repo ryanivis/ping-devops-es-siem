@@ -79,89 +79,10 @@
             </Policies>
         </RollingFile>
 
-        <!-- Security Audit log for Splunk: A time/date based rolling appender
-
-        NOTES:
-
-        You must also uncomment the reference to this appender in one or more of the following loggers
-        (under "Loggers" below) before it can be used:
-
-        org.sourceid.websso.profiles.sp.SpAuditLogger (when PingFederate is acting as a Service Provider)
-        org.sourceid.websso.profiles.idp.IdpAuditLogger (when PingFederate is acting as an Identity Provider)
-        org.sourceid.wstrust.log.STSAuditLogger (when PingFederate is acting as a Security Token Service)
-        org.sourceid.websso.profiles.idp.AsAuditLogger (when PingFederate is acting as an OAuth Authorization Server)
-
-        If you want to use UTF-8 encoding instead of system's default encoding add
-        the following line to "PatternLayout"
-        <charset>UTF-8</charset>
-        -->
-        <!--
-        <RollingFile name="SecurityAudit2Splunk" fileName="${sys:pf.log.dir}/splunk-audit.log"
-            filePattern="${sys:pf.log.dir}/splunk-audit.%d{yyyy-MM-dd}.log"
-            ignoreExceptions="false">
-            <PatternLayout>
-                <pattern>%d trackingid=&quot;%X{trackingid}&quot; event=%X{event} subject=&quot;%X{subject}&quot; ip=%X{ip} app=%X{app} connectionid=%X{connectionid} protocol=&quot;%X{protocol}&quot; pfhost=%X{host} role=%X{role} status=%X{status} adapterid=%X{adapterid} description=&quot;%X{description}&quot; responsetime=%X{responsetime} inmessagetype=&quot;%X{inmessagetype}&quot; %n</pattern>
-            </PatternLayout>
-            <Policies>
-                <TimeBasedTriggeringPolicy />
-            </Policies>
-        </RollingFile>
-        -->
-
         <RollingFile name="SecurityAudit2File" fileName="${sys:pf.log.dir}/audit.log"
                      filePattern="${sys:pf.log.dir}/audit.%d{yyyy-MM-dd}.log"
                      ignoreExceptions="false">
             <PatternLayout>
-                <!-- Uncomment this if you want to use UTF-8 encoding instead
-                    of system's default encoding. <charset>UTF-8</charset> -->
-
-                <!-- Available fields for ConversionPattern:
-                %d - transaction time
-                %X{event} - event
-                %X{subject} - user name
-                %X{ip} - client source IP
-                %X{app} - target application URL
-                %X{connectionid} - partner ID
-                %X{virtualserverid} - virtual server ID
-                %X{protocol} - protocol (e.g. SAML20)
-                %X{host} - host
-                %X{role} - role (IdP, SP)
-                %X{status} - the status of the SSO request (success, failure, authn_attempt)
-                %X{localuserid} - SP local user ID (available only when account linking is used)
-                %X{attributes} - a list of all attributes
-                %X{trackingid} - tracking ID which is unique for a user session. It is used for debugging purposes in the server log
-                %X{sessiongroupid} - Internal ID for a group of persistent sessions associated with a single browser instance via the PF.PERSISTENT cookie. It is only set if the request has triggered session lookup.
-                %X{sri} - The session reference identifier (SRI) for the user, which can be passed to the session revocation API to revoke the user's sessions. It is only set if the request has triggered session lookup.
-                %X{pfversion} - PingFederate version
-                %X{adapterid} - adapter instance ID(s) that were invoked. You can also use authenticationsourceid (for SP connections) or targetsessionid (for IdP connections) to log adapters and connections that were invoked.
-                %X{authenticationsourceid} - This will be the IdP adapter ID(s) or the IdP connection partner entity ID(s) that were invoked in an authentication/logout flow. Multiple authentication sources will appear as an array, i.e. [idpadapter1, idpconn1]
-                %X{validatorid} - ID of the Password Credentials Validator used
-                %X{targetsessionid} - For IdP connections' browser SSO, this will be the SP adapter ID(s) or the SP connection partner entity ID(s) that were invoked in an authentication/logout flow. Multiple target sessions will appear as an array, i.e. [spadapter1, spconn1]
-                %X{description} - description of failure
-
-                %X{assertionid} - ID from Assertion
-                %X{initiator} - Who initiated the SAML transaction (e.g.: SP)
-                %X{inmessagetype} - high level (protocol) message type
-                %X{inresponseto} - the InResponseTo attribute from the Response
-                %X{inxmlmsg} - the incoming XML message
-                %X{outxmlmsg} - the produced, outgoing XML message
-                %X{outurl} - URL where the protocol response was sent. For security, all query parameters and URL fragments are excluded.
-                %X{requestid} - ID of the original request
-                %X{responseid} - ID of the response
-
-                %X{accessgrantguid} - The GUID of the OAuth Access Grant
-                %X{attrackingid} - OAuth Access Token tracking ID. It is used to debug the flow of OAuth access tokens in the audit log and between PingFederate and PingAccess
-                %X{granttype} - OAuth grant type(s)
-
-                %X{stspluginid} - ID of the Token Processor / Token Generator used (STS only)
-
-                %X{requeststarttime} - start time of the request (milliseconds since midnight, January 1, 1970 UTC).
-                %X{responsetime} - time to process the request, in milliseconds
-
-                %header{a-header-name} - HTTP request header value for the given HTTP request header name
-                %parameter{parameter-name} - HTTP request parameter value for the given HTTP request parameter name
-                %trackedparameter{parameter-name} - Values for a configured tracked parameter that was stored at the start of the transaction
-                -->
                 <pattern>%d trackingid=&quot;%X{trackingid}&quot; event=%X{event} subject=&quot;%X{subject}&quot; ip=%X{ip} app=%X{app} connectionid=%X{connectionid} protocol=&quot;%X{protocol}&quot; pfhost=%X{host} role=%X{role} status=%X{status} adapterid=%X{adapterid} description=&quot;%X{description}&quot; responsetime=%X{responsetime} inmessagetype=&quot;%X{inmessagetype}&quot; %n</pattern>
             </PatternLayout>
             <Policies>
@@ -189,9 +110,7 @@
                      filePattern="${sys:pf.log.dir}/admin-event-detail.%d{yyyy-MM-dd}.log"
                      ignoreExceptions="false">
             <PatternLayout>
-                <!-- Uncomment this if you want to use UTF-8 encoding instead
-                    of system's default encoding.
-                <charset>UTF-8</charset> -->
+
                 <pattern>%X{eventdetailid} | %X{filename} | %X{delta} | line %X{position} | %m%n</pattern>
             </PatternLayout>
             <Policies>
@@ -204,21 +123,6 @@
                      filePattern="${sys:pf.log.dir}/admin-api.%d{yyyy-MM-dd}.log"
                      ignoreExceptions="false">
             <PatternLayout>
-                <!-- Uncomment this if you want to use UTF-8 encoding instead
-                    of system's default encoding.
-                <charset>UTF-8</charset> -->
-
-                <!-- Available fields for ConversionPattern:
-                %d - transaction time
-                %X{api.user} - API client identifier
-                %X{api.authtype} - type of API authentication used
-                %X{api.clientip} - client source IP
-                %X{api.httpmethod} - HTTP method invoked
-                %X{api.url} - URL for the request
-                %X{api.status} - HTTP status code for the response
-                %X{api.request} - parameters from the request body
-                %X{api.response} - parameters from the response body
-                -->
                 <pattern>%d| %X{api.user}| %X{api.authtype}| %X{api.clientip}| %X{api.httpmethod}| %X{api.url}| %X{api.status} %n</pattern>
             </PatternLayout>
             <Policies>
@@ -226,26 +130,10 @@
             </Policies>
         </RollingFile>
 
-        <!-- Runtime API Audit log : A time/date based rolling appender -->
         <RollingFile name="RuntimeApiAudit" fileName="${sys:pf.log.dir}/runtime-api.log"
                      filePattern="${sys:pf.log.dir}/runtime-api.%d{yyyy-MM-dd}.log"
                      ignoreExceptions="false">
             <PatternLayout>
-                <!-- Uncomment this if you want to use UTF-8 encoding instead
-                    of system's default encoding.
-                    <charset>UTF-8</charset> -->
-
-                <!-- Available fields for ConversionPattern:
-                %d - transaction time
-                %X{api.user} - API client identifier
-                %X{api.authtype} - type of API authentication used
-                %X{api.clientip} - client source IP
-                %X{api.httpmethod} - HTTP method invoked
-                %X{api.url} - URL for the request
-                %X{api.status} - HTTP status code for the response
-                %X{api.request} - parameters from the request body
-                %X{api.response} - parameters from the response body
-                -->
                 <pattern>%d| %X{api.user}| %X{api.authtype}| %X{api.clientip}| %X{api.httpmethod}| %X{api.url}| %X{api.status} %n</pattern>
             </PatternLayout>
             <Policies>
@@ -271,26 +159,13 @@
                      filePattern="${sys:pf.log.dir}/provisioner-audit.%d{yyyy-MM-dd}.log"
                      ignoreExceptions="false">
             <PatternLayout>
-                <!-- Uncomment this if you want to use UTF-8 encoding instead
-                    of system's default encoding.
-                <charset>UTF-8</charset> -->
-
-                <!-- Available fields for ConversionPattern:
-                %d                    - transaction time
-                %X{cycle_id}          - Unique Identifier for each provisioning cycle
-                %X{channel_id}        - Unique Identifier for Provisioning Channel between source and target
-                %X{event_type}        - Type of Provisioning event such as CREATE,UPDATE,etc.,
-                %X{source_id}         - Provisioning Source ID
-                %X{target_id}         - Provisioning Target ID
-                %X{is_success}        - Flag to show whether the event was successful or not. True in case of success, false otherwise.
-                %X{non_success_cause} - Description of failure cause
-                -->
                 <pattern>%d| %X{cycle_id}| %X{channel_id}| %X{event_type}| %X{source_id}| %X{target_id}| %X{is_success}| %X{non_success_cause} %n</pattern>
             </PatternLayout>
             <Policies>
                 <TimeBasedTriggeringPolicy />
             </Policies>
         </RollingFile>
+
 
         <Socket name="OutboundProvisionerEventToCEFSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_PROVISIONER}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
@@ -299,6 +174,7 @@
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
+
         <RollingFile name="OutboundProvisionerEventToCEFSyslog-FILE" fileName="${sys:pf.log.dir}/provisioner-audit-cef-syslog-failover.log"
             filePattern="${sys:pf.log.dir}/provisioner-audit-cef-syslog-failover.%d{yyyy-MM-dd}.log" >
             <PatternLayout>
@@ -308,6 +184,7 @@
                 <TimeBasedTriggeringPolicy />
             </Policies>
         </RollingFile>
+
         <PingFailover name="OutboundProvisionerEventToCEFSyslog-FAILOVER" primary="OutboundProvisionerEventToCEFSyslog">
             <Failovers>
                 <AppenderRef ref="OutboundProvisionerEventToCEFSyslog-FILE" />
@@ -418,14 +295,6 @@
         <Logger name="org.sourceid.websso.profiles.idp.ClientRegistrationAuditLogger"
                 level="INFO" additivity="false" includeLocation="false">
             <appender-ref ref="SecurityAudit2File" />
-            <!--
-                <appender-ref ref="SecurityAuditToCEFSyslog-FAILOVER"/>
-                <appender-ref ref="SecurityAuditToCEFFile"/>
-                <appender-ref ref="SecurityAuditToMySQLDB-FAILOVER"/>
-                <appender-ref ref="SecurityAuditToSQLServerDB-FAILOVER"/>
-                <appender-ref ref="SecurityAuditToOracleDB-FAILOVER"/>
-                <appender-ref ref="SecurityAudit2Splunk"/>
-            -->
         </Logger>
 
         <Logger name="org.sourceid.wstrust.log.STSAuditLogger"

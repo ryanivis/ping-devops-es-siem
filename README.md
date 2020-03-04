@@ -4,6 +4,14 @@
 
 The goal of this project is to have pre-built security dashboards to ride along side our products. The inital phase is currently working on PingFederate Audit Logs. 
 
+## What is this ?
+![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/Architecture.png "Architecture Overview")
+- Threat Intel and TOR Endpoints are being provided by AlienVault and the TOR Network Endpoint List.  
+- Threat Feeds are updated on an interval via seting a var in docker-compose !!!
+
+This project will start a Ping Stack with Elastic Search Infrastructure built in for visualizing traffic and other security / log data.
+
+---------------
 
 ## Status
 | Phase    | Ping Product                                |  Status     |
@@ -64,11 +72,6 @@ PING_IDENTITY_DEVOPS_KEY={YOUR DEVOPS KEY HERE}    <====== NOTICE THIS
 ### Demo Directory Demo Dashboard
 ![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/pingdirectory_dashboard.png "PingDirectory Demo Dashboard")
 
-
-- Threat Intel and TOR Endpoints are being provided by AlienVault and the TOR Network Endpoint List.  
-- Threat Feeds are updated on an interval via seting a var in docker-compose !!!
-
-![alt text](https://github.com/ryanivis/ping-devops-es-siem/blob/master/images/Architecture.png "Architecture Overview")
 ------------
 
 ## PingDirectory

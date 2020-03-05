@@ -345,8 +345,6 @@
             <AppenderRef ref="CONSOLE" />
         </AsyncRoot>
 
-
-
     </Loggers>
 
 </Configuration>

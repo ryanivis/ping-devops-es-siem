@@ -669,7 +669,7 @@
         <Socket name="SYSLOG" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="UDP">
             <PingSyslogLayout facility="LOCAL0">
                 <PatternLayout>
-                    <pattern>date=&quot;%d{ABSOLUTE}&quot; v1=&quot;%5p&quot; v2=&quot;%c:%L&quot; message=&quot;%m&quot; %n</pattern>
+                    <pattern>%d{ISO8601} date=&quot;%d{ISO8601}&quot; v1=&quot;%5p&quot; v2=&quot;%c:%L&quot; message=&quot;%m&quot; %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
@@ -677,7 +677,7 @@
         <Socket name="SYSLOG_AUDIT" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_AUDIT}" protocol="UDP">
             <PingSyslogLayout facility="LOCAL0">
                 <PatternLayout>
-                    <pattern>date=&quot;%d{ISO8601}&quot; exchangeId=&quot;%X{exchangeId}&quot; trackingId=&quot;%X{AUDIT.trackingId}&quot; roundTripMS=&quot;%X{AUDIT.roundTripMS}&quot; subject=&quot;%X{AUDIT.subject}&quot; authMech=&quot;%X{AUDIT.authMech}&quot; client=&quot;%X{AUDIT.client}&quot; method=&quot;%X{AUDIT.method}&quot; requestUri=&quot;%X{AUDIT.requestUri}&quot; responseCode=&quot;%X{AUDIT.responseCode}&quot; %n</pattern>
+                    <pattern>%d{ISO8601} date=&quot;%d{ISO8601}&quot; exchangeId=&quot;%X{exchangeId}&quot; trackingId=&quot;%X{AUDIT.trackingId}&quot; roundTripMS=&quot;%X{AUDIT.roundTripMS}&quot; subject=&quot;%X{AUDIT.subject}&quot; authMech=&quot;%X{AUDIT.authMech}&quot; client=&quot;%X{AUDIT.client}&quot; method=&quot;%X{AUDIT.method}&quot; requestUri=&quot;%X{AUDIT.requestUri}&quot; responseCode=&quot;%X{AUDIT.responseCode}&quot; %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

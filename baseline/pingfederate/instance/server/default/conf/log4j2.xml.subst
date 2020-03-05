@@ -170,7 +170,7 @@
         <Socket name="OutboundProvisionerEventToCEFSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_PROVISIONER}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-			<pattern>| %d{MMM dd yyyy HH:mm:ss.SSS}| PingIdentity| PingFederate| ProvisionerLog| %X{pfversion}| %X{event_type}| %X{cycle_id}| %X{channel_id}| %X{event_type}| %X{source_id}| %X{target_id}| %X{is_success}| %X{non_success_cause} %n</pattern>
+			<pattern>%d{ISO8601}| %d{MMM dd yyyy HH:mm:ss.SSS}| PingIdentity| PingFederate| ProvisionerLog| %X{pfversion}| %X{event_type}| %X{cycle_id}| %X{channel_id}| %X{event_type}| %X{source_id}| %X{target_id}| %X{is_success}| %X{non_success_cause} %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
@@ -194,7 +194,7 @@
         <Socket name="SecurityAuditToCEFSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_AUDIT}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                    <pattern>%d trackingid=&quot;%X{trackingid}&quot; event=%X{event} subject=&quot;%X{subject}&quot; ip=&quot;%X{ip}&quot; app=&quot;%X{app}&quot; connectionid=&quot;%X{connectionid}&quot; protocol=&quot;%X{protocol}&quot; pfhost=&quot;%X{host}&quot; role=&quot;%X{role}&quot; status=&quot;%X{status}&quot; adapterid=&quot;%X{adapterid}&quot; description=&quot;%X{description}&quot; responsetime=&quot;%X{responsetime}&quot; inmessagetype=&quot;%X{inmessagetype}&quot; %n</pattern>
+                    <pattern>%d{ISO8601} date=&quot;%d{ISO8601}&quot; trackingid=&quot;%X{trackingid}&quot; event=%X{event} subject=&quot;%X{subject}&quot; ip=&quot;%X{ip}&quot; app=&quot;%X{app}&quot; connectionid=&quot;%X{connectionid}&quot; protocol=&quot;%X{protocol}&quot; pfhost=&quot;%X{host}&quot; role=&quot;%X{role}&quot; status=&quot;%X{status}&quot; adapterid=&quot;%X{adapterid}&quot; description=&quot;%X{description}&quot; responsetime=&quot;%X{responsetime}&quot; inmessagetype=&quot;%X{inmessagetype}&quot; %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
@@ -217,7 +217,7 @@
         <Socket name="OutboundSystemLogsToSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                    <pattern>date=&quot;%d{MMM dd yyyy HH:mm:ss.SSS}&quot; trackingid=&quot;%X{trackingid}&quot; loglevel=&quot;%-5p&quot; messagesource=&quot;[%c]&quot; messagedetail=&quot;%m&quot; %n</pattern>
+                    <pattern>%d{ISO8601} date=&quot;%d{ISO8601}&quot; trackingid=&quot;%X{trackingid}&quot; loglevel=&quot;%-5p&quot; messagesource=&quot;[%c]&quot; messagedetail=&quot;%m&quot; %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

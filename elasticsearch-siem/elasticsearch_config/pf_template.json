@@ -57,7 +57,7 @@
         }
       },
       "host": {
-        "type": "ip",
+        "type": "text",
         "fields": {
           "keyword": {
             "type": "keyword",

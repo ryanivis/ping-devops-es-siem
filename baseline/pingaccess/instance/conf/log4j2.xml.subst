@@ -669,7 +669,7 @@
         <Socket name="SYSLOG" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="UDP">
             <PingSyslogLayout facility="LOCAL0">
                 <PatternLayout>
-                    <pattern>%d{ISO8601} date=&quot;%d{ISO8601}&quot; v1=&quot;%5p&quot; v2=&quot;%c:%L&quot; message=&quot;%m&quot; %n</pattern>
+                    <pattern>%d{ISO8601} date=&quot;%d{ISO8601}&quot; loglevel=&quot;%5p&quot; messagesource=&quot;%c:%L&quot; messagedetail=&quot;%m&quot; %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

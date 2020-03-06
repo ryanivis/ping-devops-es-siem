@@ -217,7 +217,7 @@
         <Socket name="OutboundSystemLogsToSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_SYSTEM}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                    <pattern>%d date=`%d{ISO8601}` trackingid=`%X{trackingid}` loglevel=`%-5p` messagesource=`[%c]` messagedetail=`%m` %n</pattern>
+                    <pattern>%d date=&#96;%d{ISO8601}&#96; trackingid=&#96;%X{trackingid}&#96; loglevel=&#96;%-5p&#96; messagesource=&#96;[%c]&#96; messagedetail=&#96;%m&#96; %n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>

@@ -194,7 +194,7 @@
         <Socket name="SecurityAuditToCEFSyslog" host="${SYSLOG_HOST}" port="${SYSLOG_PORT_AUDIT}" protocol="${SYSLOG_PROTOCOL}" ignoreExceptions="false">
             <PingSyslogLayout>
                 <PatternLayout>
-                    <pattern>%d date=&quot;%d{ISO8601}&quot; trackingid=&quot;%X{trackingid}&quot; event=%X{event} subject=&quot;%X{subject}&quot; ip=&quot;%X{ip}&quot; app=&quot;%X{app}&quot; connectionid=&quot;%X{connectionid}&quot; protocol=&quot;%X{protocol}&quot; pfhost=&quot;%X{host}&quot; role=&quot;%X{role}&quot; status=&quot;%X{status}&quot; adapterid=&quot;%X{adapterid}&quot; description=&quot;%X{description}&quot; responsetime=&quot;%X{responsetime}&quot; inmessagetype=&quot;%X{inmessagetype}&quot; %n</pattern>
+                    <pattern>%d&#96;date&#94;%d{ISO8601}&#96;trackingid&#94;%X{trackingid}&#96;event&#94;%X{event}&#96;subject&#94;%X{subject}&#96;ip&#94;%X{ip}&#96;app&#94;%X{app}&#96;connectionid&#94;%X{connectionid}&#96;protocol&#94;%X{protocol}&#96;pfhost&#94;%X{host}&#96;role&#94;%X{role}&#96;status&#94;%X{status}&#96;adapterid&#94;%X{adapterid}&#96;description&#94;%X{description}&#96;responsetime&#94;%X{responsetime}&#96;inmessagetype&#94;%X{inmessagetype}&#96;%n</pattern>
                 </PatternLayout>
             </PingSyslogLayout>
         </Socket>
